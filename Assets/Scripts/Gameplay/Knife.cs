@@ -7,6 +7,7 @@ namespace KnifeGame.Gameplay
     public class Knife : MonoBehaviour
     {
         [SerializeField] private float _rotationSpeed = 20f;
+        [SerializeField] private float _launchSpeed = 20f;
 
         private Rigidbody _rb;
         private Vector3 _startPos;
@@ -33,17 +34,6 @@ namespace KnifeGame.Gameplay
             SwipeManager.Inst.OnSwipeEnd += OnSwipeEndHandler;
         }
 
-        private void OnSwipeEndHandler(Vector2 endPos)
-        {
-            Vector2 force = Camera.main.ScreenToViewportPoint(endPos) - _swipeStart;
-            Launch(force * 20f);
-        }
-
-        private void OnSwipeStartHandler(Vector2 startPos)
-        {
-            _swipeStart = Camera.main.ScreenToViewportPoint(startPos);
-        }
-
         private void OnCollisionEnter(Collision collision)
         {
             if (!_isLaunched || !CanCollide) return;
@@ -67,12 +57,15 @@ namespace KnifeGame.Gameplay
             Debug.Log("Hit");
         }
 
-        private void Update()
+        private void OnSwipeEndHandler(Vector2 endPos)
         {
-            //if (Input.GetMouseButtonDown(0))
-            //{
-            //    Launch(Vector3.up * 10f);
-            //}
+            Vector2 force = Camera.main.ScreenToViewportPoint(endPos) - _swipeStart;
+            Launch(force);
+        }
+
+        private void OnSwipeStartHandler(Vector2 startPos)
+        {
+            _swipeStart = Camera.main.ScreenToViewportPoint(startPos);
         }
 
         private void ResetKnife()
@@ -84,17 +77,17 @@ namespace KnifeGame.Gameplay
             _rb.angularVelocity = Vector3.zero;
         }
 
-        public void Launch(Vector3 force)
+        public void Launch(Vector3 direction)
         {
             if (!CanLaunch) return;
 
-            Debug.Log($"Launch: {force}");
+            Debug.Log($"Launch: {direction}");
 
             _launchStart = Time.time;
             _isLaunched = true;
 
             _rb.isKinematic = false;
-            _rb.AddForce(force, ForceMode.Impulse);
+            _rb.AddForce(direction * _launchSpeed, ForceMode.Impulse);
             _rb.AddTorque(new Vector3(0f, 0f, _rotationSpeed), ForceMode.Impulse);
         }
     }
