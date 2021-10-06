@@ -5,7 +5,7 @@ namespace KnifeGame.Gameplay
 {
     public class Knife : MonoBehaviour
     {
-        [SerializeField] private float _maxAngle = 45f;
+        [SerializeField] private float _rotationSpeed = 20f;
 
         private Rigidbody _rb;
         private Vector3 _startPos;
@@ -53,10 +53,10 @@ namespace KnifeGame.Gameplay
 
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0))
-            {
-                Launch(Vector3.up * 10f);
-            }
+            //if (Input.GetMouseButtonDown(0))
+            //{
+            //    Launch(Vector3.up * 10f);
+            //}
         }
 
         private void ResetKnife()
@@ -74,7 +74,7 @@ namespace KnifeGame.Gameplay
 
             _rb.isKinematic = false;
             _rb.AddForce(force, ForceMode.Impulse);
-            _rb.AddTorque(new Vector3(0f, 0f, 20f), ForceMode.Impulse);
+            _rb.AddTorque(new Vector3(0f, 0f, _rotationSpeed), ForceMode.Impulse);
         }
     }
 }
