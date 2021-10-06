@@ -46,10 +46,10 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 56
-  m_CollisionDetection: 0
+  m_CollisionDetection: 3
 --- !u!65 &5067941195368615377
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -75,6 +75,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774777ebec3316342b2da7a0ecfe9804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _maxAngle: 45
 --- !u!1001 &9004000982048905961
 PrefabInstance:
   m_ObjectHideFlags: 0
