@@ -1,6 +1,5 @@
-using DG.Tweening;
-using UnityEngine;
 using KnifeGame.Util;
+using UnityEngine;
 
 namespace KnifeGame.Gameplay
 {
@@ -9,19 +8,19 @@ namespace KnifeGame.Gameplay
         [SerializeField] private float _maxAngle = 45f;
 
         private Rigidbody _rb;
-        private BoxCollider _collider;
-
         private Vector3 _startPos;
-        private bool _isLaunched = false;
 
-        private Tween _rotationTween;
+        private bool _isLaunched = false;
+        private float _launchStart = 999;
+
         private Coroutine _resetCoroutine;
 
+        private bool CanLaunch => _resetCoroutine == null && !_isLaunched;
+        private bool CanCollide => (Time.time - _launchStart) > 0.1f; // Ignore collision at the start of the launch
 
         void Awake()
         {
             _rb = GetComponent<Rigidbody>();
-            _collider = GetComponent<BoxCollider>();
         }
 
         private void Start()
@@ -31,59 +30,51 @@ namespace KnifeGame.Gameplay
 
         private void OnCollisionEnter(Collision collision)
         {
-            // If we're not falling
-            if (!_isLaunched || _resetCoroutine != null || _rb.velocity.y > 0f) return;
+            if (!_isLaunched || !CanCollide) return;
 
-            _rotationTween.Kill();
-            _rotationTween = null;
-
-            float angle = transform.eulerAngles.z;
-
-            Debug.Log($"[Knife]: Hit detected! Angle: {angle} (max: {_maxAngle})");
-
-            if (!collision.gameObject.CompareTag("Platform") || angle > _maxAngle || angle < -_maxAngle)
+            _isLaunched = false;
+            _resetCoroutine = this.DelayAction(1f, () =>
             {
-                Debug.Log("Miss.");
-                _resetCoroutine = this.DelayAction(0.5f, () =>
-                {
-                    _isLaunched = false;
-                    _rb.isKinematic = true;
-                    transform.position = _startPos;
-                    transform.rotation = new Quaternion();
+                ResetKnife();
+                _resetCoroutine = null;
+            });
+            Debug.Log($"Miss: {collision.gameObject.name}");
+        }
 
-                    _resetCoroutine = null;
-                });
-                return;
-            }
-            
-            _rb.velocity = Vector3.zero;
+        private void OnTriggerEnter(Collider other)
+        {
+            if (!_isLaunched || _resetCoroutine != null || !CanCollide) return;
+
+            _launchStart = 999;
             _rb.isKinematic = true;
-            
-            transform.DOMoveY(transform.position.y - 0.5f, 0.1f)
-                .OnComplete(()=> _isLaunched = false);
+            _isLaunched = false;
+            Debug.Log("Hit");
         }
 
         private void Update()
         {
-            if (Input.GetMouseButtonDown(0) && !_isLaunched)
+            if (Input.GetMouseButtonDown(0))
             {
                 Launch(Vector3.up * 10f);
             }
         }
 
+        private void ResetKnife()
+        {
+            transform.position = _startPos;
+            transform.rotation = new Quaternion();
+        }
+
         public void Launch(Vector3 force)
         {
-            _isLaunched = true;
+            if (!CanLaunch) return;
 
-            if (_rotationTween == null)
-            {
-                _rotationTween = transform.DORotate(new Vector3(0f, 0f, 360f), 0.5f, RotateMode.FastBeyond360)
-                    .SetLoops(-1)
-                    .SetRelative(true);
-            }
+            _launchStart = Time.time;
+            _isLaunched = true;
 
             _rb.isKinematic = false;
             _rb.AddForce(force, ForceMode.Impulse);
+            _rb.AddTorque(new Vector3(0f, 0f, 20f), ForceMode.Impulse);
         }
     }
 }

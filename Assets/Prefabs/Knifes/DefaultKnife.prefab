@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 6938827782813304876}
   - component: {fileID: 5067941195368615377}
   - component: {fileID: 7093101212310494302}
+  - component: {fileID: 2691476358587310118}
   m_Layer: 0
   m_Name: DefaultKnife
   m_TagString: Untagged
@@ -46,10 +47,10 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 56
-  m_CollisionDetection: 3
+  m_CollisionDetection: 0
 --- !u!65 &5067941195368615377
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -61,8 +62,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5584381, y: 2.7927413, z: 0.16986367}
-  m_Center: {x: 0.026493758, y: -0.004415512, z: -0.035324976}
+  m_Size: {x: 0.5584381, y: 2.4018102, z: 0.16986367}
+  m_Center: {x: 0.026493758, y: 0.19105005, z: -0.035324976}
 --- !u!114 &7093101212310494302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,6 +77,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _maxAngle: 45
+--- !u!135 &2691476358587310118
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3490336190593854016}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.16
+  m_Center: {x: 0.12, y: -1.23, z: 0.2341314}
 --- !u!1001 &9004000982048905961
 PrefabInstance:
   m_ObjectHideFlags: 0
