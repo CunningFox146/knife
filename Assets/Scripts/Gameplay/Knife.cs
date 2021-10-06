@@ -83,12 +83,14 @@ namespace KnifeGame.Gameplay
 
             Debug.Log($"Launch: {direction}");
 
+            float rotDir = direction.x <= 0f ? 1f : -1f;
+
             _launchStart = Time.time;
             _isLaunched = true;
 
             _rb.isKinematic = false;
             _rb.AddForce(direction * _launchSpeed, ForceMode.Impulse);
-            _rb.AddTorque(new Vector3(0f, 0f, _rotationSpeed), ForceMode.Impulse);
+            _rb.AddTorque(0f, 0f, _rotationSpeed * rotDir, ForceMode.Impulse);
         }
     }
 }
