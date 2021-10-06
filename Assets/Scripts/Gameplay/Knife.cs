@@ -1,3 +1,4 @@
+using KnifeGame.Managers;
 using KnifeGame.Util;
 using UnityEngine;
 
@@ -12,6 +13,7 @@ namespace KnifeGame.Gameplay
 
         private bool _isLaunched = false;
         private float _launchStart = 999;
+        private Vector3 _swipeStart;
 
         private Coroutine _resetCoroutine;
 
@@ -26,6 +28,20 @@ namespace KnifeGame.Gameplay
         private void Start()
         {
             _startPos = transform.position;
+
+            SwipeManager.Inst.OnSwipeStart += OnSwipeStartHandler;
+            SwipeManager.Inst.OnSwipeEnd += OnSwipeEndHandler;
+        }
+
+        private void OnSwipeEndHandler(Vector2 endPos)
+        {
+            Vector2 force = Camera.main.ScreenToViewportPoint(endPos) - _swipeStart;
+            Launch(force * 20f);
+        }
+
+        private void OnSwipeStartHandler(Vector2 startPos)
+        {
+            _swipeStart = Camera.main.ScreenToViewportPoint(startPos);
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -43,7 +59,7 @@ namespace KnifeGame.Gameplay
 
         private void OnTriggerEnter(Collider other)
         {
-            if (!_isLaunched || _resetCoroutine != null || !CanCollide) return;
+            if (!_isLaunched || _resetCoroutine != null || !CanCollide || !other.CompareTag("Platform")) return;
 
             _launchStart = 999;
             _rb.isKinematic = true;
@@ -63,11 +79,16 @@ namespace KnifeGame.Gameplay
         {
             transform.position = _startPos;
             transform.rotation = new Quaternion();
+
+            _rb.velocity = Vector3.zero;
+            _rb.angularVelocity = Vector3.zero;
         }
 
         public void Launch(Vector3 force)
         {
             if (!CanLaunch) return;
+
+            Debug.Log($"Launch: {force}");
 
             _launchStart = Time.time;
             _isLaunched = true;

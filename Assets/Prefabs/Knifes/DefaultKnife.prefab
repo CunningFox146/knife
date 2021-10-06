@@ -11,8 +11,8 @@ GameObject:
   - component: {fileID: 1569372368539251839}
   - component: {fileID: 6938827782813304876}
   - component: {fileID: 5067941195368615377}
-  - component: {fileID: 7093101212310494302}
   - component: {fileID: 2691476358587310118}
+  - component: {fileID: 7093101212310494302}
   m_Layer: 0
   m_Name: DefaultKnife
   m_TagString: Untagged
@@ -62,8 +62,21 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.5584381, y: 2.4018102, z: 0.16986367}
-  m_Center: {x: 0.026493758, y: 0.19105005, z: -0.035324976}
+  m_Size: {x: 0.25314152, y: 1.77532, z: 0.11798473}
+  m_Center: {x: 0.060465395, y: 0.16715622, z: -0.021339081}
+--- !u!135 &2691476358587310118
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3490336190593854016}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.122983575
+  m_Center: {x: -0.02533625, y: -0.94000006, z: 0}
 --- !u!114 &7093101212310494302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -76,20 +89,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 774777ebec3316342b2da7a0ecfe9804, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _maxAngle: 45
---- !u!135 &2691476358587310118
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3490336190593854016}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 1
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.16
-  m_Center: {x: 0.12, y: -1.23, z: 0.2341314}
+  _rotationSpeed: 20
 --- !u!1001 &9004000982048905961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -103,11 +103,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5bbbac205d23e39419dbeeb1e2f4c9e6, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0.175
+      value: 0.043
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5bbbac205d23e39419dbeeb1e2f4c9e6, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -2.045
+      value: -1.537
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 5bbbac205d23e39419dbeeb1e2f4c9e6, type: 3}
       propertyPath: m_LocalPosition.z

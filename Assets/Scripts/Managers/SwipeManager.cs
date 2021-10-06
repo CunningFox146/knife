@@ -40,7 +40,6 @@ namespace KnifeGame.Managers
             {
                 OnSwipeEnd?.Invoke(_swipeCurrent);
                 _isSwiping = false;
-                Debug.LogWarning($"End:{_swipeCurrent}");
             }
 
             if (!IsTouching) return;
@@ -52,12 +51,10 @@ namespace KnifeGame.Managers
             {
                 _isSwiping = true;
                 OnSwipeStart?.Invoke(_swipeCurrent);
-                Debug.LogError($"Start:{_swipeCurrent}");
             }
             else if (swipeOld != _swipeCurrent)
             {
                 OnSwipeDrag?.Invoke(_swipeCurrent);
-                Debug.Log($"Drag:{_swipeCurrent}");
             }
         }
     }
