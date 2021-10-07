@@ -2,7 +2,7 @@ using KnifeGame.Managers;
 using KnifeGame.Util;
 using UnityEngine;
 
-namespace KnifeGame.Gameplay
+namespace KnifeGame.Knife
 {
     public class Knife : MonoBehaviour
     {
