@@ -11,6 +11,7 @@ namespace KnifeGame.Managers
         public event Action<Vector2> OnSwipeStart;
         public event Action<Vector2> OnSwipeDrag;
         public event Action<Vector2> OnSwipeEnd;
+        public event Action<Vector3> OnSwipe;
 
         private Vector2 _swipeStart;
         private Vector2 _swipeCurrent;
@@ -38,7 +39,10 @@ namespace KnifeGame.Managers
 
             if (phase == TouchPhase.Ended)
             {
+                var camera = Camera.main;
+
                 OnSwipeEnd?.Invoke(_swipeCurrent);
+                OnSwipe?.Invoke(camera.ScreenToViewportPoint(_swipeCurrent) - camera.ScreenToViewportPoint(_swipeStart));
                 _isSwiping = false;
             }
 
@@ -50,6 +54,7 @@ namespace KnifeGame.Managers
             if (!_isSwiping)
             {
                 _isSwiping = true;
+                _swipeStart = _swipeCurrent;
                 OnSwipeStart?.Invoke(_swipeCurrent);
             }
             else if (swipeOld != _swipeCurrent)

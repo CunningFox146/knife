@@ -14,7 +14,6 @@ namespace KnifeGame.Knife
 
         private bool _isLaunched = false;
         private float _launchStart = 999;
-        private Vector3 _swipeStart;
 
         private Coroutine _resetCoroutine;
 
@@ -30,8 +29,7 @@ namespace KnifeGame.Knife
         {
             _startPos = transform.position;
 
-            SwipeManager.Inst.OnSwipeStart += OnSwipeStartHandler;
-            SwipeManager.Inst.OnSwipeEnd += OnSwipeEndHandler;
+            SwipeManager.Inst.OnSwipe += OnSwipeHandler;
         }
 
         private void OnCollisionEnter(Collision collision)
@@ -57,17 +55,11 @@ namespace KnifeGame.Knife
             Debug.Log("Hit");
         }
 
-        private void OnSwipeEndHandler(Vector2 endPos)
+        private void OnSwipeHandler(Vector3 direction)
         {
-            Vector2 force = Camera.main.ScreenToViewportPoint(endPos) - _swipeStart;
-            Launch(force);
+            Launch(direction);
         }
-
-        private void OnSwipeStartHandler(Vector2 startPos)
-        {
-            _swipeStart = Camera.main.ScreenToViewportPoint(startPos);
-        }
-
+        
         private void ResetKnife()
         {
             transform.position = _startPos;
