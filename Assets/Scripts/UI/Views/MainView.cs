@@ -41,13 +41,18 @@ namespace KnifeGame.UI.Views
 
             _statsPos = _stats.anchoredPosition;
             _stats.anchoredPosition = _statsPos + Vector2.up * 300f;
+            _stats.gameObject.SetActive(false);
         }
 
         private void HideTitle()
         {
-            _stats.DOAnchorPos(_statsPos, 0.5f);
+            _stats.gameObject.SetActive(true);
+            _stats.DOAnchorPos(_statsPos, 0.5f).SetEase(Ease.OutBack);
+
             var titleScale = _title.rectTransform.localScale;
-            _title.rectTransform.DOScale(new Vector3(titleScale.x, 0f, titleScale.z), 0.5f).SetEase(Ease.InBack);
+            _title.rectTransform.DOScale(new Vector3(titleScale.x, 0f, titleScale.z), 0.5f)
+                .SetEase(Ease.InBack)
+                .OnComplete(() => _title.gameObject.SetActive(false));
 
             _guide.Kill();
         }
