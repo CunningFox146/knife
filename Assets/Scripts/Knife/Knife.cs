@@ -42,7 +42,8 @@ namespace KnifeGame.Knife
                 ResetKnife();
                 _resetCoroutine = null;
             });
-            Debug.Log($"Miss: {collision.gameObject.name}");
+
+            ScoreManager.Inst.KnifeMiss();
         }
 
         private void OnTriggerEnter(Collider other)
@@ -52,7 +53,8 @@ namespace KnifeGame.Knife
             _launchStart = 999;
             _rb.isKinematic = true;
             _isLaunched = false;
-            Debug.Log("Hit");
+
+            ScoreManager.Inst.KnifeHit();
         }
 
         private void OnSwipeHandler(Vector3 direction)

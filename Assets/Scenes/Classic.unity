@@ -617,7 +617,6 @@ GameObject:
   - component: {fileID: 721429260}
   - component: {fileID: 721429263}
   - component: {fileID: 721429262}
-  - component: {fileID: 721429261}
   m_Layer: 5
   m_Name: SwipeMiddle (4)
   m_TagString: Untagged
@@ -644,20 +643,6 @@ RectTransform:
   m_AnchoredPosition: {x: -239.4, y: 41.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &721429261
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 721429259}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19b7a9991e88ffb4b91d96508e5e48a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myCanvas: {fileID: 2022938819}
-  _start: {x: 0, y: 0}
 --- !u!114 &721429262
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1034,6 +1019,7 @@ GameObject:
   - component: {fileID: 1353584011}
   - component: {fileID: 1353584013}
   - component: {fileID: 1353584012}
+  - component: {fileID: 1353584014}
   m_Layer: 5
   m_Name: Score
   m_TagString: Untagged
@@ -1102,6 +1088,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1353584010}
   m_CullTransparentMesh: 1
+--- !u!114 &1353584014
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1353584010}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10b630769683cbb48b3718d1a5d4d33e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1372906215
 GameObject:
   m_ObjectHideFlags: 0
@@ -1207,7 +1205,6 @@ GameObject:
   - component: {fileID: 1497393495}
   - component: {fileID: 1497393498}
   - component: {fileID: 1497393497}
-  - component: {fileID: 1497393496}
   m_Layer: 5
   m_Name: SwipeMiddle (3)
   m_TagString: Untagged
@@ -1234,20 +1231,6 @@ RectTransform:
   m_AnchoredPosition: {x: -239.4, y: 41.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1497393496
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1497393494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19b7a9991e88ffb4b91d96508e5e48a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myCanvas: {fileID: 2022938819}
-  _start: {x: 0, y: 0}
 --- !u!114 &1497393497
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1297,7 +1280,6 @@ GameObject:
   - component: {fileID: 1505629375}
   - component: {fileID: 1505629378}
   - component: {fileID: 1505629377}
-  - component: {fileID: 1505629376}
   m_Layer: 5
   m_Name: SwipeMiddle
   m_TagString: Untagged
@@ -1324,20 +1306,6 @@ RectTransform:
   m_AnchoredPosition: {x: -239.4, y: 41.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1505629376
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1505629374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19b7a9991e88ffb4b91d96508e5e48a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myCanvas: {fileID: 2022938819}
-  _start: {x: 0, y: 0}
 --- !u!114 &1505629377
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1387,7 +1355,6 @@ GameObject:
   - component: {fileID: 1524605552}
   - component: {fileID: 1524605555}
   - component: {fileID: 1524605554}
-  - component: {fileID: 1524605553}
   m_Layer: 5
   m_Name: SwipeMiddle (2)
   m_TagString: Untagged
@@ -1414,20 +1381,6 @@ RectTransform:
   m_AnchoredPosition: {x: -239.4, y: 41.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1524605553
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1524605551}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19b7a9991e88ffb4b91d96508e5e48a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myCanvas: {fileID: 2022938819}
-  _start: {x: 0, y: 0}
 --- !u!114 &1524605554
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1567,7 +1520,6 @@ GameObject:
   - component: {fileID: 1620318730}
   - component: {fileID: 1620318733}
   - component: {fileID: 1620318732}
-  - component: {fileID: 1620318731}
   m_Layer: 5
   m_Name: SwipeStart
   m_TagString: Untagged
@@ -1594,20 +1546,6 @@ RectTransform:
   m_AnchoredPosition: {x: -239.4, y: 41.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1620318731
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1620318729}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19b7a9991e88ffb4b91d96508e5e48a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myCanvas: {fileID: 2022938819}
-  _start: {x: 0, y: 0}
 --- !u!114 &1620318732
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1657,7 +1595,6 @@ GameObject:
   - component: {fileID: 1625213848}
   - component: {fileID: 1625213851}
   - component: {fileID: 1625213850}
-  - component: {fileID: 1625213849}
   m_Layer: 5
   m_Name: SwipeMiddle (1)
   m_TagString: Untagged
@@ -1684,20 +1621,6 @@ RectTransform:
   m_AnchoredPosition: {x: -239.4, y: 41.8}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1625213849
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1625213847}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19b7a9991e88ffb4b91d96508e5e48a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  myCanvas: {fileID: 2022938819}
-  _start: {x: 0, y: 0}
 --- !u!114 &1625213850
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1747,6 +1670,7 @@ GameObject:
   - component: {fileID: 1634618730}
   - component: {fileID: 1634618732}
   - component: {fileID: 1634618731}
+  - component: {fileID: 1634618733}
   m_Layer: 5
   m_Name: Best
   m_TagString: Untagged
@@ -1815,6 +1739,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634618729}
   m_CullTransparentMesh: 1
+--- !u!114 &1634618733
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1634618729}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2526316ad32534c49bca3b7ebb8c3517, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1686586776
 GameObject:
   m_ObjectHideFlags: 0
@@ -2120,7 +2056,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
   _views:
-  - {fileID: 1372906217}
+  - {fileID: 0}
 --- !u!1001 &2118884478
 PrefabInstance:
   m_ObjectHideFlags: 0
