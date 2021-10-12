@@ -741,7 +741,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &927577372
 RectTransform:
   m_ObjectHideFlags: 0
@@ -789,7 +789,6 @@ MonoBehaviour:
   - {fileID: 1497393494}
   - {fileID: 721429259}
   _end: {fileID: 85217171}
-  _uiCamera: {fileID: 385827546}
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

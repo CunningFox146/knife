@@ -4,13 +4,12 @@ using UnityEngine;
 
 namespace KnifeGame.UI
 {
-    public class LaunchDisplay : MonoBehaviour
+    public class SwipeDisplay : MonoBehaviour
     {
         [SerializeField] private Canvas _canvas;
         [SerializeField] private GameObject _start;
         [SerializeField] private List<GameObject> _dots;
         [SerializeField] private GameObject _end;
-        [SerializeField] private Camera _uiCamera;
 
         private Vector3 _swipeStart;
 
@@ -18,14 +17,14 @@ namespace KnifeGame.UI
         {
             SwipeManager.Inst.OnSwipeStart += OnSwipeStartHandler;
             SwipeManager.Inst.OnSwipeDrag += OnSwipeDragHandler;
-            //SwipeManager.Inst.OnSwipeEnd += (pos) => Disable() ;
+            SwipeManager.Inst.OnSwipeEnd += (pos) => Disable();
         }
 
-        //private Vector3 ConvertPos(Vector2 pos)
-        //{
-        //    RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform, pos, _canvas.worldCamera, out pos);
-        //    return _canvas.transform.TransformPoint(pos);
-        //}
+        private Vector3 ConvertPos(Vector2 pos)
+        {
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(_canvas.transform as RectTransform, pos, _canvas.worldCamera, out pos);
+            return _canvas.transform.TransformPoint(pos);
+        }
 
         private void Enable()
         {
@@ -43,19 +42,24 @@ namespace KnifeGame.UI
         private void OnSwipeStartHandler(Vector2 start)
         {
             Enable();
-            
-            //transform.position = Camera.main.ScreenToWorldPoint(start);
-            //_swipeStart = ConvertPos(start);
-            //((RectTransform)_start.transform).position = _swipeStart;
-            //OnSwipeDragHandler(start);
+            OnSwipeDragHandler(start);
+
+            _swipeStart = ConvertPos(start);
+            _start.transform.position = _swipeStart;
         }
 
         private void OnSwipeDragHandler(Vector2 pos)
         {
-            var canvasPos = _uiCamera.ScreenToWorldPoint(pos);
-            canvasPos.z = 10f;
-            ((RectTransform)_start.transform).position = canvasPos;
-            //((RectTransform)_end.transform).position = ConvertPos(pos);
+            var dragPos = ConvertPos(pos);
+            _end.transform.position = dragPos;
+
+            Vector3 dist = dragPos - _swipeStart;
+            for (int i = 0; i < _dots.Count; i++)
+            {
+                float percent = (float)i / (float)_dots.Count;
+                var dot = _dots[i];
+                dot.transform.position = dist * percent + _swipeStart;
+            }
         }
     }
 }
