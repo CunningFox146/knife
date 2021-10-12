@@ -626,7 +626,7 @@ MonoBehaviour:
   _canvas: {fileID: 2022938819}
   _startPrefab: {fileID: 7334896853155499215, guid: b74706f628e92664ba398b43f353a94f, type: 3}
   _middlePrefab: {fileID: 7334896853155499215, guid: a0ede87757f2c8240b1bdfae286d6f0e, type: 3}
-  _endPrefab: {fileID: 7334896853155499215, guid: b74706f628e92664ba398b43f353a94f, type: 3}
+  _endPrefab: {fileID: 7334896853155499215, guid: f5c24275d6441e14593dc9799becdd2f, type: 3}
   _dotsCount: 5
 --- !u!1 &963194225
 GameObject:
