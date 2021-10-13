@@ -92,7 +92,7 @@ namespace KnifeGame.Knife
                 {
                     totalRot = 0f;
                     _flipsCount++;
-                    ScoreManager.Inst.KnifeFlip();
+                    ScoreManager.Inst.KnifeFlip(gameObject);
                 }
 
                 lastUp = transform.up;
