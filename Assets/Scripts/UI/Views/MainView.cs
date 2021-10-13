@@ -13,6 +13,7 @@ namespace KnifeGame.UI.Views
         [SerializeField] private Text _score;
         [SerializeField] private Text _scoreMax;
         [SerializeField] private Text _coins;
+        [SerializeField] private GameObject _flipPrefab;
 
         private Vector2 _statsPos;
         private bool _titleVisible = true;
@@ -22,6 +23,12 @@ namespace KnifeGame.UI.Views
             ShowTitle();
 
             SwipeManager.Inst.OnSwipeStart += OnSwipeStartHandler;
+            ScoreManager.Inst.OnKnifeFlip += OnKnifeFlipHandler;
+        }
+
+        private void OnKnifeFlipHandler(int points)
+        {
+            Instantiate(_flipPrefab, transform).GetComponent<FlipIndicator>().Init(points);
         }
 
         private void OnSwipeStartHandler(Vector2 start)
