@@ -1609,6 +1609,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _uiCamera: {fileID: 385827546}
   _flipPrefab: {fileID: 617633481605838235, guid: 1e0ce2397f6b4f645ad7043523591d69, type: 3}
+  _menu: {fileID: 608375765}
   _stats: {fileID: 1489296003}
   _guide: {fileID: 1551898339}
   _score: {fileID: 1353584012}

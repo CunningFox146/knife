@@ -103,7 +103,7 @@ namespace KnifeGame.Knife
 
         public void Launch(Vector3 direction)
         {
-            if (!CanLaunch || direction.y <= 0f) return;
+            if (!CanLaunch || direction.y <= 0f || direction.magnitude < 0.05f) return;
 
             Debug.Log($"Launch: {direction}");
 

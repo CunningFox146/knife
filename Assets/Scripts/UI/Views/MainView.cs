@@ -12,6 +12,7 @@ namespace KnifeGame.UI.Views
 
         [SerializeField] private GameObject _flipPrefab;
 
+        [SerializeField] private RectTransform _menu;
         [SerializeField] private RectTransform _stats;
         [SerializeField] private Guide _guide;
 
@@ -55,12 +56,16 @@ namespace KnifeGame.UI.Views
             _statsPos = _stats.anchoredPosition;
             _stats.anchoredPosition = _statsPos + Vector2.up * 300f;
             _stats.gameObject.SetActive(false);
+
+            _menu.anchoredPosition = Vector2.down * 500f;
         }
 
         private void ShowStats()
         {
             _stats.gameObject.SetActive(true);
             _stats.DOAnchorPos(_statsPos, 0.5f).SetEase(Ease.OutBack);
+
+            _menu.DOAnchorPos(Vector2.zero, 0.5f).SetEase(Ease.OutCubic);
 
             _guide.Kill();
         }
