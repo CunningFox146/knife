@@ -1,5 +1,6 @@
 using KnifeGame.Managers;
 using KnifeGame.Util;
+using System.Collections;
 using UnityEngine;
 
 namespace KnifeGame.Knife
@@ -12,6 +13,7 @@ namespace KnifeGame.Knife
         private Rigidbody _rb;
         private Vector3 _startPos;
 
+        private int _flipsCount = 0;
         private bool _isLaunched = false;
         private float _launchStart = 999;
 
@@ -37,6 +39,7 @@ namespace KnifeGame.Knife
             if (!_isLaunched || !CanCollide) return;
 
             _isLaunched = false;
+            _flipsCount = 0;
             _resetCoroutine = this.DelayAction(1f, () =>
             {
                 ResetKnife();
@@ -54,7 +57,8 @@ namespace KnifeGame.Knife
             _rb.isKinematic = true;
             _isLaunched = false;
 
-            ScoreManager.Inst.KnifeHit();
+            ScoreManager.Inst.KnifeHit(_flipsCount);
+            _flipsCount = 0;
         }
 
         private void OnSwipeHandler(Vector3 direction)
@@ -71,6 +75,32 @@ namespace KnifeGame.Knife
             _rb.angularVelocity = Vector3.zero;
         }
 
+        // When angle is > 180 it becomes negative.
+        // So when it changes to neg or back, we count it as a half of a point
+        private IEnumerator RotationCoroutine()
+        {
+            float totalRot = 0f;
+            var lastUp = transform.up;
+
+            while (_isLaunched)
+            {
+                var rotDelta = Vector3.SignedAngle(transform.up, lastUp, transform.right);
+
+                totalRot += Mathf.Abs(rotDelta);
+
+                if (totalRot >= 360f)
+                {
+                    totalRot = 0f;
+                    _flipsCount++;
+                    ScoreManager.Inst.KnifeFlip();
+                }
+
+                lastUp = transform.up;
+
+                yield return null;
+            }
+        }
+
         public void Launch(Vector3 direction)
         {
             if (!CanLaunch || direction.y <= 0f) return;
@@ -81,6 +111,8 @@ namespace KnifeGame.Knife
 
             _launchStart = Time.time;
             _isLaunched = true;
+
+            StartCoroutine(RotationCoroutine());
 
             _rb.isKinematic = false;
             _rb.AddForce(direction * _launchSpeed, ForceMode.Impulse);
