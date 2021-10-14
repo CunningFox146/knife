@@ -9,8 +9,11 @@ namespace KnifeGame.Knife
     {
         [SerializeField] private float _rotationSpeed = 20f;
         [SerializeField] private float _launchSpeed = 20f;
+        [SerializeField] private bool _isPlayingHit = true;
 
         private Rigidbody _rb;
+        private Animator _animator;
+        private int _hitHash;
         private Vector3 _startPos;
 
         private int _flipsCount = 0;
@@ -25,6 +28,9 @@ namespace KnifeGame.Knife
         void Awake()
         {
             _rb = GetComponent<Rigidbody>();
+            _animator = GetComponent<Animator>();
+
+            _hitHash = Animator.StringToHash("Hit");
         }
 
         private void Start()
@@ -59,6 +65,11 @@ namespace KnifeGame.Knife
 
             ScoreManager.Inst.KnifeHit(_flipsCount);
             _flipsCount = 0;
+
+            if (_isPlayingHit)
+            {
+                _animator.SetTrigger(_hitHash);
+            }
         }
 
         private void OnSwipeHandler(Vector3 direction)
