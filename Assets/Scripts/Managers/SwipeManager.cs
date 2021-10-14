@@ -17,27 +17,16 @@ namespace KnifeGame.Managers
         private Vector2 _swipeCurrent;
         private bool _isSwiping = false;
 
-        private bool IsTouching => IsMobile ? Input.touchCount > 0 : Input.GetMouseButton(0);
-        private Vector2 TouchPosition => IsMobile ? Input.GetTouch(0).position : (Vector2)Input.mousePosition;
+        private Vector2 TouchPosition => (Vector2)Input.mousePosition;
 
         private void Update()
         {
             Swipe();
         }
 
-        private TouchPhase GetPhase()
-        {
-            if (IsMobile) return Input.GetTouch(0).phase;
-            if (Input.GetMouseButtonDown(0)) return TouchPhase.Began;
-            if (Input.GetMouseButtonUp(0)) return TouchPhase.Ended;
-            return TouchPhase.Moved;
-        }
-
         private void Swipe()
         {
-            TouchPhase phase = GetPhase();
-
-            if (phase == TouchPhase.Ended)
+            if (Input.GetMouseButtonUp(0) && _isSwiping)
             {
                 var camera = Camera.main;
 
@@ -46,7 +35,7 @@ namespace KnifeGame.Managers
                 _isSwiping = false;
             }
 
-            if (!IsTouching) return;
+            if (!Input.GetMouseButton(0)) return;
 
             Vector2 swipeOld = _swipeCurrent;
             _swipeCurrent = TouchPosition;
