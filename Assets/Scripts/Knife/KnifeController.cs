@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace KnifeGame.Knife
 {
-    public class Knife : MonoBehaviour
+    public class KnifeController : MonoBehaviour
     {
         [SerializeField] private float _rotationSpeed = 20f;
         [SerializeField] private float _launchSpeed = 20f;
@@ -55,7 +55,7 @@ namespace KnifeGame.Knife
                 _resetCoroutine = null;
             });
 
-            ScoreManager.Inst.KnifeMiss();
+            ScoreManager.Inst.KnifeMiss(this);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -106,7 +106,7 @@ namespace KnifeGame.Knife
                 {
                     totalRot = 0f;
                     _flipsCount++;
-                    ScoreManager.Inst.KnifeFlip(gameObject);
+                    ScoreManager.Inst.KnifeFlip(this);
                 }
 
                 lastUp = transform.up;

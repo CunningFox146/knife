@@ -1,4 +1,5 @@
 ﻿using DG.Tweening;
+using KnifeGame.Knife;
 using KnifeGame.Managers;
 using KnifeGame.Util;
 using UnityEngine;
@@ -31,7 +32,7 @@ namespace KnifeGame.UI.Views
             ScoreManager.Inst.OnKnifeFlip += OnKnifeFlipHandler;
         }
 
-        private void OnKnifeFlipHandler(GameObject knife, int points)
+        private void OnKnifeFlipHandler(KnifeController knife, int points)
         {
             // I don't know why it works, but it does
             Vector3 screenPoint = _uiCamera.WorldToScreenPoint(knife.transform.position);

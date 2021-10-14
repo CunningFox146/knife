@@ -1,4 +1,5 @@
-﻿using KnifeGame.Util;
+﻿using KnifeGame.Knife;
+using KnifeGame.Util;
 using System;
 using UnityEngine;
 
@@ -8,7 +9,8 @@ namespace KnifeGame.Managers
     {
         public event Action<int> OnScoreChanged;
         public event Action<int> OnBestScoreChanged;
-        public event Action<GameObject, int> OnKnifeFlip;
+        public event Action<KnifeController, int> OnKnifeFlip;
+        public event Action<KnifeController> OnKnifeMiss;
 
         private int _bestScore;
         private int _currentScore;
@@ -32,6 +34,11 @@ namespace KnifeGame.Managers
             }
         }
 
+        private void Start()
+        {
+            
+        }
+
         public void KnifeHit(int flips)
         {
             flips++;
@@ -42,12 +49,13 @@ namespace KnifeGame.Managers
             }
         }
 
-        public void KnifeMiss()
+        public void KnifeMiss(KnifeController knife)
         {
             CurrentScore = 0;
+            OnKnifeMiss?.Invoke(knife);
         }
 
-        public void KnifeFlip(GameObject knife, int points = 1)
+        public void KnifeFlip(KnifeController knife, int points = 1)
         {
             OnKnifeFlip?.Invoke(knife, points);
         }

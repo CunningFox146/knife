@@ -1,4 +1,5 @@
-﻿using KnifeGame.Util;
+﻿using KnifeGame.Knife;
+using KnifeGame.Util;
 using System;
 using UnityEngine;
 
