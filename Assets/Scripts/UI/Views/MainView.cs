@@ -27,7 +27,7 @@ namespace KnifeGame.UI.Views
         {
             HideStats();
 
-            SwipeManager.Inst.OnSwipeStart += OnSwipeStartHandler;
+            GameManager.Inst.OnGameStart += OnGameStartHandler;
             ScoreManager.Inst.OnKnifeFlip += OnKnifeFlipHandler;
         }
 
@@ -42,8 +42,10 @@ namespace KnifeGame.UI.Views
             indicator.GetComponent<FlipIndicator>().OnFlip(points, _score);
         }
 
-        private void OnSwipeStartHandler(Vector2 start)
+        private void OnGameStartHandler()
         {
+            GameManager.Inst.OnGameStart -= OnGameStartHandler;
+
             if (_statsHidden)
             {
                 _statsHidden = false;

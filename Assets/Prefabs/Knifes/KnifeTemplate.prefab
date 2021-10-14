@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 4004762157529596893}
   - component: {fileID: 8540637775972535553}
   - component: {fileID: 3582006052202532358}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Cube
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -105,7 +105,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7176030840020882391}
   - component: {fileID: 4586755358348418053}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Tip
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -152,7 +152,7 @@ GameObject:
   - component: {fileID: 5067941195368615377}
   - component: {fileID: 7093101212310494302}
   - component: {fileID: 8904122040898131609}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: KnifeTemplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -248,7 +248,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6084679315962768331}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: KnifeContainer
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -280,7 +280,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5122604827941271158}
   - component: {fileID: 7199265793328587680}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Trail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
