@@ -10,6 +10,7 @@ namespace KnifeGame.Knife
         [SerializeField] private float _rotationSpeed = 20f;
         [SerializeField] private float _launchSpeed = 20f;
         [SerializeField] private bool _isPlayingHit = true;
+        [SerializeField] private TrailRenderer _trail;
 
         private Rigidbody _rb;
         private Animator _animator;
@@ -44,6 +45,8 @@ namespace KnifeGame.Knife
         {
             if (!_isLaunched || !CanCollide) return;
 
+            _trail.emitting = false;
+
             _isLaunched = false;
             _flipsCount = 0;
             _resetCoroutine = this.DelayAction(1f, () =>
@@ -62,6 +65,8 @@ namespace KnifeGame.Knife
             _launchStart = 999;
             _rb.isKinematic = true;
             _isLaunched = false;
+
+            _trail.emitting = false;
 
             ScoreManager.Inst.KnifeHit(_flipsCount);
             _flipsCount = 0;
@@ -86,8 +91,6 @@ namespace KnifeGame.Knife
             _rb.angularVelocity = Vector3.zero;
         }
 
-        // When angle is > 180 it becomes negative.
-        // So when it changes to neg or back, we count it as a half of a point
         private IEnumerator RotationCoroutine()
         {
             float totalRot = 0f;
@@ -122,6 +125,8 @@ namespace KnifeGame.Knife
 
             _launchStart = Time.time;
             _isLaunched = true;
+
+            _trail.emitting = true;
 
             StartCoroutine(RotationCoroutine());
 

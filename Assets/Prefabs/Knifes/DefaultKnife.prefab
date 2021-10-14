@@ -55,6 +55,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: DefaultKnife
       objectReference: {fileID: 0}
+    - target: {fileID: 5122604827941271158, guid: 7de4273ee7b67714d8e50a684489c1e2, type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7de4273ee7b67714d8e50a684489c1e2, type: 3}
 --- !u!4 &5692482383203318324 stripped
