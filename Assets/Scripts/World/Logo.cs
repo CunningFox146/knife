@@ -11,6 +11,10 @@ namespace KnifeGame.World
         private void Start()
         {
             SwipeManager.Inst.OnSwipeStart += OnSwipeStartHandler;
+
+            var pos = transform.position;
+            transform.position = pos + Vector3.up * 4f;
+            transform.DOMove(pos, 2f).SetEase(Ease.OutElastic);
         }
 
         private void OnSwipeStartHandler(Vector2 obj)
