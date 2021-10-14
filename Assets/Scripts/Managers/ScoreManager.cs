@@ -34,7 +34,8 @@ namespace KnifeGame.Managers
 
         public void KnifeHit(int flips)
         {
-            CurrentScore += ++flips;
+            flips++;
+            CurrentScore += flips;
             if (CurrentScore > BestScore)
             {
                 BestScore = CurrentScore;

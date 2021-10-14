@@ -18,7 +18,7 @@ namespace KnifeGame.UI
             _canvasGroup = GetComponent<CanvasGroup>();
         }
         
-        public void Init(int points, Text score)
+        public void OnFlip(int points, Text score)
         {
             _text.text = points.ToString();
 

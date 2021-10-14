@@ -39,7 +39,7 @@ namespace KnifeGame.UI.Views
 
             var indicator = Instantiate(_flipPrefab, transform);
             ((RectTransform)indicator.transform).anchoredPosition = result;
-            indicator.GetComponent<FlipIndicator>().Init(points, _score);
+            indicator.GetComponent<FlipIndicator>().OnFlip(points, _score);
         }
 
         private void OnSwipeStartHandler(Vector2 start)
