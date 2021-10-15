@@ -10,6 +10,7 @@ namespace KnifeGame.Managers
         public event Action<int> OnScoreChanged;
         public event Action<int> OnBestScoreChanged;
         public event Action<KnifeController, int> OnKnifeFlip;
+        public event Action<KnifeController, int> OnKnifeHit;
         public event Action<KnifeController> OnKnifeMiss;
 
         private int _bestScore;
@@ -39,7 +40,7 @@ namespace KnifeGame.Managers
             
         }
 
-        public void KnifeHit(int flips)
+        public void KnifeHit(KnifeController knife, int flips)
         {
             flips++;
             CurrentScore += flips;
@@ -47,6 +48,7 @@ namespace KnifeGame.Managers
             {
                 BestScore = CurrentScore;
             }
+            OnKnifeHit?.Invoke(knife, flips);
         }
 
         public void KnifeMiss(KnifeController knife)

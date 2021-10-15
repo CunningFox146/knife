@@ -68,7 +68,7 @@ namespace KnifeGame.Knife
 
             _trail.emitting = false;
 
-            ScoreManager.Inst.KnifeHit(_flipsCount);
+            ScoreManager.Inst.KnifeHit(this, _flipsCount);
             _flipsCount = 0;
 
             if (_isPlayingHit)
