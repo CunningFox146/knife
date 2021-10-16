@@ -25,16 +25,17 @@ namespace KnifeGame.UI
         {
             _canvasGroup = GetComponent<CanvasGroup>();
 
+            RectTransform GetRectTransform(GameObject obj) => (RectTransform)obj.transform;
 
             _dots = new List<RectTransform>();
             for (int i = 0; i < _dotsCount; i++)
             {
                 _dots.Add(
-                    Instantiate(_middlePrefab, transform).GetComponent<RectTransform>()
+                    GetRectTransform(Instantiate(_middlePrefab, transform))
                  );
             }
-            _start = Instantiate(_startPrefab, transform).GetComponent<RectTransform>();
-            _end = Instantiate(_endPrefab, transform).GetComponent<RectTransform>();
+            _start = GetRectTransform(Instantiate(_startPrefab, transform));
+            _end = GetRectTransform(Instantiate(_endPrefab, transform));
 
             Disable(false);
         }
