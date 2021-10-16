@@ -1259,6 +1259,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 927577372}
+  - component: {fileID: 927577374}
   - component: {fileID: 927577373}
   m_Layer: 5
   m_Name: SwipeDisplay
@@ -1303,6 +1304,18 @@ MonoBehaviour:
   _middlePrefab: {fileID: 7334896853155499215, guid: a0ede87757f2c8240b1bdfae286d6f0e, type: 3}
   _endPrefab: {fileID: 7334896853155499215, guid: f5c24275d6441e14593dc9799becdd2f, type: 3}
   _dotsCount: 5
+--- !u!225 &927577374
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 927577371}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &963194225
 GameObject:
   m_ObjectHideFlags: 0

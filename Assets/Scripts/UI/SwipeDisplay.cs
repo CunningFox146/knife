@@ -1,3 +1,4 @@
+using DG.Tweening;
 using KnifeGame.Managers;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,13 +13,18 @@ namespace KnifeGame.UI
         [SerializeField] private GameObject _endPrefab;
         [SerializeField] private int _dotsCount = 5;
 
+        private CanvasGroup _canvasGroup;
         private RectTransform _start;
         private RectTransform _end;
         private List<RectTransform> _dots;
         private Vector3 _swipeStart;
 
+        private Tween _fadeTween;
+
         private void Awake()
         {
+            _canvasGroup = GetComponent<CanvasGroup>();
+
             _dots = new List<RectTransform>();
             for (int i = 0; i < _dotsCount; i++)
             {
@@ -29,7 +35,7 @@ namespace KnifeGame.UI
             _start = Instantiate(_startPrefab, transform).GetComponent<RectTransform>();
             _end = Instantiate(_endPrefab, transform).GetComponent<RectTransform>();
 
-            Disable();
+            Disable(false);
         }
 
         private void Start()
@@ -47,15 +53,45 @@ namespace KnifeGame.UI
 
         private void Enable()
         {
+            KillTween();
+
+            _canvasGroup.alpha = 1f;
             _start.gameObject.SetActive(true);
             _end.gameObject.SetActive(true);
             _dots.ForEach((item) => item.gameObject.SetActive(true));
         }
-        private void Disable()
+
+        private void Disable(bool isTweening = true)
         {
-            _start.gameObject.SetActive(false);
-            _end.gameObject.SetActive(false);
-            _dots.ForEach((item) => item.gameObject.SetActive(false));
+            KillTween();
+
+            void OnComplete()
+            {
+                _start.gameObject.SetActive(false);
+                _end.gameObject.SetActive(false);
+                _dots.ForEach((item) => item.gameObject.SetActive(false));
+            }
+
+            if (isTweening)
+            {
+                _fadeTween = _canvasGroup.DOFade(0f, 0.25f)
+                    .SetEase(Ease.InSine)
+                    .OnComplete(OnComplete);
+            }
+            else
+            {
+                _canvasGroup.alpha = 0f;
+                OnComplete();
+            }
+        }
+
+        private void KillTween()
+        {
+            if (_fadeTween != null)
+            {
+                _fadeTween.Kill();
+                _fadeTween = null;
+            }
         }
 
         private void OnSwipeStartHandler(Vector2 start)
