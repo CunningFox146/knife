@@ -1,4 +1,5 @@
 using KnifeGame.Knife;
+using KnifeGame.Shop;
 using KnifeGame.Util;
 using System;
 using UnityEngine;
@@ -10,13 +11,15 @@ namespace KnifeGame.Managers
     {
         public event Action<int> OnCoinsChanged;
 
+        [SerializeField] private ShopList _itemList;
         [SerializeField] private GameObject _coinPrefab;
 
         private int _coinsCount;
 
-        public int CoinsCount {
+        public int CoinsCount
+        {
             get => _coinsCount;
-            private set 
+            private set
             {
                 if (_coinsCount != value)
                 {

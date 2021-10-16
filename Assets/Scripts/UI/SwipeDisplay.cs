@@ -25,6 +25,7 @@ namespace KnifeGame.UI
         {
             _canvasGroup = GetComponent<CanvasGroup>();
 
+
             _dots = new List<RectTransform>();
             for (int i = 0; i < _dotsCount; i++)
             {
