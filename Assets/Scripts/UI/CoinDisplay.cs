@@ -1,17 +1,16 @@
 ﻿using DG.Tweening;
 using KnifeGame.Managers;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using UnityEngine.UI;
 using UnityEngine;
 
 namespace Assets.Scripts.UI
 {
     public class CoinDisplay : MonoBehaviour
     {
+        [SerializeField] private Text _text;
+
         private CanvasGroup _canvasGroup;
+        private int _currentCoins = 0;
 
         private void Awake()
         {
@@ -22,6 +21,15 @@ namespace Assets.Scripts.UI
         private void Start()
         {
             GameManager.Inst.OnGameStart += OnGameStartHandler;
+            ShopManager.Inst.OnCoinsChanged += OnCoinsChangedHandler;
+
+            OnCoinsChangedHandler(ShopManager.Inst.CoinsCount);
+        }
+
+        private void OnCoinsChangedHandler(int coins)
+        {
+            _currentCoins = coins;
+            _text.text = coins.ToString();
         }
 
         private void OnGameStartHandler()
