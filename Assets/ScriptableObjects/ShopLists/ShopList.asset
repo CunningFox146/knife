@@ -13,4 +13,5 @@ MonoBehaviour:
   m_Name: ShopList
   m_EditorClassIdentifier: 
   defaultItem: 0
-  items: []
+  items:
+  - {fileID: 11400000, guid: a347c945d4ebd7247b7ffac8bacc77ca, type: 2}

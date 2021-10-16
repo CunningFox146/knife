@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd609e7d7dea64b4389a4d722218660d, type: 3}
   m_Name: DefaultKnife
   m_EditorClassIdentifier: 
-  itemName: 
+  itemName: Default Knife
   itemPrice: 0
   type: 0
+  prefab: {fileID: 3098185503865404351, guid: 79e11a4dd39ce1043914092d1c80df9b, type: 3}

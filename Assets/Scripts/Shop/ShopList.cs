@@ -10,5 +10,6 @@ namespace KnifeGame.Shop
         public List<ShopItem> items;
 
         public ShopItem GetItem(ShopItemType type) => items.Find(item => item.type == type);
+        public ShopItem Default => GetItem(defaultItem);
     }
 }

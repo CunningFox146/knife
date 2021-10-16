@@ -10,12 +10,26 @@ namespace KnifeGame.Managers
     public class ShopManager : Singleton<ShopManager>
     {
         public event Action<int> OnCoinsChanged;
+        public event Action<ShopItem> OnItemChanged;
 
         [SerializeField] private ShopList _itemList;
         [SerializeField] private GameObject _coinPrefab;
 
+        private ShopItem _selectedItem;
         private int _coinsCount;
 
+        public ShopItem SelectedItem
+        {
+            get => _selectedItem;
+            set
+            {
+                if (_selectedItem != value)
+                {
+                    OnItemChanged?.Invoke(value);
+                }
+                _selectedItem = value;
+            }
+        }
         public int CoinsCount
         {
             get => _coinsCount;
@@ -27,6 +41,14 @@ namespace KnifeGame.Managers
                 }
                 _coinsCount = value;
             }
+        }
+
+        protected override void Awake()
+        {
+            base.Awake();
+
+            // TODO: Load instead of picking default prefab
+            _selectedItem = _itemList.Default;
         }
 
         private void Start()

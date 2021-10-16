@@ -9,5 +9,6 @@ namespace KnifeGame.Shop
         public string itemName;
         public int itemPrice;
         public ShopItemType type;
+        public GameObject prefab;
     }
 }
