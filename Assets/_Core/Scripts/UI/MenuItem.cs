@@ -6,9 +6,6 @@ namespace KnifeGame.UI
 {
     public class MenuItem : MonoBehaviour
     {
-        [SerializeField] private Color _selectedColor;
-        [SerializeField] private Color _deselectedColor;
-        [Space]
         [SerializeField] private Text _text;
         [SerializeField] private Image _image;
 
@@ -28,21 +25,21 @@ namespace KnifeGame.UI
         {
             KillSequence();
 
-            float duration = 0.5f;
+            float duration = 0.25f;
             _sequence = DOTween.Sequence()
                 .Append(_image.DOColor(color, duration))
                 .Join(_text.DOColor(color, duration))
-                .SetEase(Ease.OutSine);
+                .SetEase(Ease.InOutSine);
         }
 
-        public void SelectItem()
+        public void SelectItem(Color color)
         {
-            ChangeColor(_selectedColor);
+            ChangeColor(color);
         }
 
-        public void DeselectItem()
+        public void DeselectItem(Color color)
         {
-            ChangeColor(_deselectedColor);
+            ChangeColor(color);
         }
 
         private void KillSequence()
