@@ -18,10 +18,9 @@ namespace KnifeGame.UI.Views
         [SerializeField] private Guide _guide;
 
         [SerializeField] private Text _score;
-        [SerializeField] private Text _scoreMax;
-        [SerializeField] private Text _coins;
 
         private Vector2 _statsPos;
+        private Vector2 _menuPos;
         private bool _statsHidden = true;
 
         private void Start()
@@ -57,9 +56,12 @@ namespace KnifeGame.UI.Views
         private void HideStats()
         {
             _statsPos = _stats.anchoredPosition;
+            _menuPos = _menu.anchoredPosition;
+
             _stats.anchoredPosition = _statsPos + Vector2.up * 300f;
             _stats.gameObject.SetActive(false);
 
+            _menu.gameObject.SetActive(false);
             _menu.anchoredPosition = Vector2.down * 500f;
         }
 
@@ -68,7 +70,8 @@ namespace KnifeGame.UI.Views
             _stats.gameObject.SetActive(true);
             _stats.DOAnchorPos(_statsPos, 0.5f).SetEase(Ease.OutBack);
 
-            _menu.DOAnchorPos(Vector2.zero, 0.5f).SetEase(Ease.OutCubic);
+            _menu.gameObject.SetActive(true);
+            _menu.DOAnchorPos(_menuPos, 0.5f).SetEase(Ease.OutCubic);
 
             _guide.Kill();
         }

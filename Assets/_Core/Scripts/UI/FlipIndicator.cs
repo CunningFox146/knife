@@ -48,8 +48,10 @@ namespace KnifeGame.UI
 
             var color = _text.color;
             color.a = 0f;
-            _text.DOColor(color, 0.5f).SetEase(Ease.OutCirc);
-            ((RectTransform)_text.transform).DOAnchorPos(new Vector2(score.preferredWidth, 0f), 0.5f)
+            _text.DOColor(color, 0.25f)
+                .SetDelay(0.25f)
+                .SetEase(Ease.OutCirc);
+            ((RectTransform)_text.transform).DOAnchorPos(new Vector2(score.preferredWidth * -1.5f, 0f), 0.5f)
                 .SetEase(Ease.OutSine)
                 .OnComplete(() => Destroy(_text.gameObject));
         }
