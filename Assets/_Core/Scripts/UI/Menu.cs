@@ -2,10 +2,11 @@ using UnityEngine;
 using System.Collections.Generic;
 using KnifeGame.Managers;
 using KnifeGame.UI.Views;
+using KnifeGame.Util;
 
 namespace KnifeGame.UI
 {
-    public class Menu : MonoBehaviour
+    public class Menu : Singleton<Menu>
     {   
         [SerializeField] private List<MenuItem> _items;
         [Space]

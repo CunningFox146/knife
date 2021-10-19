@@ -33,6 +33,8 @@ namespace KnifeGame.UI.Views
 
         private void OnKnifeFlipHandler(KnifeController knife, int points)
         {
+            if (!SwipeManager.Inst.IsActive) return;
+
             // I don't know why it works, but it does
             Vector3 screenPoint = _uiCamera.WorldToScreenPoint(knife.transform.position);
             RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent.GetComponent<RectTransform>(), screenPoint, _uiCamera, out Vector2 result);

@@ -20,10 +20,10 @@ namespace KnifeGame.Managers
         private bool _isSwiping = false;
         private bool _isActive = true;
 
-        private bool IsActive
+        public bool IsActive
         {
             get => _isActive;
-            set
+            private set
             {
                 if (_isActive != value)
                 {
@@ -43,11 +43,19 @@ namespace KnifeGame.Managers
         private void OnViewShown(View newView)
         {
             IsActive = newView is MainView;
+            //if (_isSwiping && !IsActive)
+            //{
+            //    _isSwiping = false;
+            //    Swipe();
+            //}
         }
 
         private void Update()
         {
-            Swipe();
+            if (_isActive)
+            {
+                Swipe();
+            }
         }
 
         private void Swipe()

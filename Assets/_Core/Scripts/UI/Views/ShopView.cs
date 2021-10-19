@@ -54,13 +54,6 @@ namespace KnifeGame.UI.Views
                 .OnComplete(()=>base.Hide());
         }
 
-        public void Close()
-        {
-            print("Close");
-            ViewManager.HideAllViews();
-            ViewManager.ShowView<MainView>();
-        }
-
         private void KillSequence()
         {
             if (_animSequence != null)

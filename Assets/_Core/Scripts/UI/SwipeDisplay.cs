@@ -44,7 +44,6 @@ namespace KnifeGame.UI
 
         private void Start()
         {
-
             SwipeManager.Inst.OnActiveChanged += OnActiveChangedHandler;
 
             EnableEvents();
@@ -59,6 +58,7 @@ namespace KnifeGame.UI
             }
             else
             {
+                Disable(false);
                 DisableEvents();
             }
         }

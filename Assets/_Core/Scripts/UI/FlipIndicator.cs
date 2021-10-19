@@ -17,16 +17,9 @@ namespace KnifeGame.UI
         {
             _canvasGroup = GetComponent<CanvasGroup>();
         }
-
-        private void OnDestroy()
-        {
-            SwipeManager.Inst.OnActiveChanged -= OnActiveChangedHandler;
-        }
-
+        
         public void OnFlip(int points, Text score)
         {
-            SwipeManager.Inst.OnActiveChanged += OnActiveChangedHandler;
-
             _text.text = points.ToString();
 
             var rectTrans = (RectTransform)transform;
@@ -48,20 +41,10 @@ namespace KnifeGame.UI
                 );
         }
 
-        private void OnActiveChangedHandler(bool isActive)
-        {
-            if (isActive) return;
-
-            if (_animSequence != null)
-            {
-                _animSequence.Kill();
-                _animSequence = null;
-            }
-            Destroy(gameObject);
-        }
-
         private void AnimateText(Text score)
         {
+            if (score != null) return;
+
             var scoreRect = (RectTransform)score.transform;
             _text.transform.SetParent(score.transform);
 
@@ -74,7 +57,5 @@ namespace KnifeGame.UI
                 .SetEase(Ease.OutSine)
                 .OnComplete(() => Destroy(_text.gameObject));
         }
-
-
     }
 }
