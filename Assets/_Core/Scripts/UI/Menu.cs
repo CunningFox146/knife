@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
-
+using KnifeGame.Managers;
+using KnifeGame.UI.Views;
 
 namespace KnifeGame.UI
 {
@@ -22,6 +23,24 @@ namespace KnifeGame.UI
                 _selected = item;
                 _selected.SelectItem(_selectedColor);
             }
+        }
+
+        public void ShowShop()
+        {
+            ViewManager.HideAllViews();
+            ViewManager.ShowView<ShopView>();
+        }
+
+        public void ShowModes()
+        {
+            ViewManager.HideAllViews();
+            ViewManager.ShowView<ShopView>();
+        }
+
+        public void ShowOptions()
+        {
+            ViewManager.HideAllViews();
+            ViewManager.ShowView<MainView>();
         }
     }
 }

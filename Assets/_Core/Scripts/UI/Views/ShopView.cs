@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
+using KnifeGame.Managers;
 using UnityEngine;
 
 namespace KnifeGame.UI.Views
@@ -38,6 +39,26 @@ namespace KnifeGame.UI.Views
                 .Append(_canvasGroup.DOFade(1f, duration))
                 .Join(_rectTrans.DOAnchorPos(Vector2.zero, duration))
                 .SetEase(Ease.OutCubic);
+        }
+
+        public override void Hide()
+        {
+            KillSequence();
+
+            float duration = 0.25f;
+
+            _animSequence = DOTween.Sequence()
+                .Append(_canvasGroup.DOFade(0f, duration))
+                .Join(_rectTrans.DOAnchorPos(Vector2.up * 50f, duration))
+                .SetEase(Ease.OutCubic)
+                .OnComplete(()=>base.Hide());
+        }
+
+        public void Close()
+        {
+            print("Close");
+            ViewManager.HideAllViews();
+            ViewManager.ShowView<MainView>();
         }
 
         private void KillSequence()
