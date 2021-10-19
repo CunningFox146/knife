@@ -10,5 +10,10 @@ namespace KnifeGame.Shop
         public int itemPrice;
         public ShopItemType type;
         public GameObject prefab;
+        [Space]
+        public GameObject shopModel;
+        public Vector2 pos = new Vector2(-100f, 0f);
+        public Vector2 scale = Vector2.one * 65f;
+        public Vector3 rotation = Vector3.forward * 45f;
     }
 }

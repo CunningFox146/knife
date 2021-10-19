@@ -3,6 +3,7 @@ using KnifeGame.Shop;
 using KnifeGame.Util;
 using System;
 using UnityEngine;
+using System.Collections.Generic;
 using Random = UnityEngine.Random;
 
 namespace KnifeGame.Managers
@@ -17,6 +18,9 @@ namespace KnifeGame.Managers
 
         private ShopItem _selectedItem;
         private int _coinsCount;
+        private List<ShopItemType> _ownedItems;
+
+        public ShopList ItemList => _itemList;
 
         public ShopItem SelectedItem
         {
@@ -47,6 +51,10 @@ namespace KnifeGame.Managers
         {
             base.Awake();
 
+            _ownedItems = new List<ShopItemType>();
+            // TODO: Load owned items
+            _ownedItems.Add(_itemList.defaultItem);
+
             // TODO: Load instead of picking default prefab
             _selectedItem = _itemList.Default;
         }
@@ -55,6 +63,8 @@ namespace KnifeGame.Managers
         {
             ScoreManager.Inst.OnKnifeHit += OnKnifeFlipHandler;
         }
+
+        public bool IsItemOwned(ShopItemType type) => _ownedItems.Contains(type);
 
         private void OnKnifeFlipHandler(KnifeController knife, int points)
         {

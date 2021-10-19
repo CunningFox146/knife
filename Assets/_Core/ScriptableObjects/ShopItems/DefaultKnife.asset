@@ -16,3 +16,7 @@ MonoBehaviour:
   itemPrice: 0
   type: 0
   prefab: {fileID: 3098185503865404351, guid: 79e11a4dd39ce1043914092d1c80df9b, type: 3}
+  shopModel: {fileID: 919132149155446097, guid: eba71fcc2546a744a9f2889a074f9c3a, type: 3}
+  pos: {x: 55, y: -40}
+  scale: {x: 65, y: 65}
+  rotation: {x: 0, y: 0, z: 45}
