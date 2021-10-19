@@ -36,18 +36,18 @@ namespace KnifeGame.UI.Views
                 .SetEase(Ease.OutCubic);
         }
 
-        public override void Hide()
-        {
-            KillSequence();
+        //public override void Hide()
+        //{
+        //    KillSequence();
 
-            float duration = 0.25f;
+        //    float duration = 0.25f;
 
-            _animSequence = DOTween.Sequence()
-                .Append(_canvasGroup.DOFade(0f, duration))
-                .Join(_rectTrans.DOAnchorPos(Vector2.up * 50f, duration))
-                .SetEase(Ease.OutCubic)
-                .OnComplete(()=>base.Hide());
-        }
+        //    _animSequence = DOTween.Sequence()
+        //        .Append(_canvasGroup.DOFade(0f, duration))
+        //        .Join(_rectTrans.DOAnchorPos(Vector2.up * 50f, duration))
+        //        .SetEase(Ease.OutCubic)
+        //        .OnComplete(()=>base.Hide());
+        //}
 
         protected void KillSequence()
         {

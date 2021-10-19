@@ -28,20 +28,26 @@ namespace KnifeGame.UI
 
         public void ShowShop()
         {
+            if (ViewManager.IsViewVisible<ShopView>()) return;
+
             ViewManager.HideAllViews();
             ViewManager.ShowView<ShopView>();
         }
 
         public void ShowModes()
         {
+            if (ViewManager.IsViewVisible<GameModesView>()) return;
+
             ViewManager.HideAllViews();
-            ViewManager.ShowView<ShopView>();
+            ViewManager.ShowView<GameModesView>();
         }
 
         public void ShowOptions()
         {
+            if (ViewManager.IsViewVisible<OptionsView>()) return;
+
             ViewManager.HideAllViews();
-            ViewManager.ShowView<MainView>();
+            ViewManager.ShowView<OptionsView>();
         }
     }
 }

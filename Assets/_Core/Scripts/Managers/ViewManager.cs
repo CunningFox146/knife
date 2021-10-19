@@ -46,5 +46,11 @@ namespace KnifeGame.Managers
         {
             Inst._views.ForEach((view) => HideView(view));
         }
+
+        public static bool IsViewVisible<T>() where T : View
+        {
+            var view = GetView<T>();
+            return view != null && view.GetIsActive();
+        }
     }
 }

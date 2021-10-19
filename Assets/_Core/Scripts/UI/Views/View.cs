@@ -6,5 +6,7 @@ namespace KnifeGame.UI.Views
     {
         public virtual void Show() => gameObject.SetActive(true);
         public virtual void Hide() => gameObject.SetActive(false);
+
+        public virtual bool GetIsActive() => gameObject.activeSelf;
     }
 }
