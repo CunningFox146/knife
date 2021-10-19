@@ -1,4 +1,5 @@
 ﻿using KnifeGame.Util;
+using KnifeGame.UI.Views;
 using System;
 using UnityEngine;
 
@@ -12,12 +13,37 @@ namespace KnifeGame.Managers
         public event Action<Vector2> OnSwipeDrag;
         public event Action<Vector2> OnSwipeEnd;
         public event Action<Vector3> OnSwipe;
+        public event Action<bool> OnActiveChanged;
 
         private Vector2 _swipeStart;
         private Vector2 _swipeCurrent;
         private bool _isSwiping = false;
+        private bool _isActive = true;
+
+        private bool IsActive
+        {
+            get => _isActive;
+            set
+            {
+                if (_isActive != value)
+                {
+                    OnActiveChanged?.Invoke(value);
+                }
+                _isActive = value;
+            }
+        }
 
         private Vector2 TouchPosition => (Vector2)Input.mousePosition;
+
+        private void Start()
+        {
+            ViewManager.Inst.OnViewShown += OnViewShown;
+        }
+
+        private void OnViewShown(View newView)
+        {
+            IsActive = newView is MainView;
+        }
 
         private void Update()
         {

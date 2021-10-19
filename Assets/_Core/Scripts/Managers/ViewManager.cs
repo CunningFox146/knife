@@ -1,5 +1,6 @@
 ﻿using KnifeGame.UI.Views;
 using KnifeGame.Util;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -8,11 +9,15 @@ namespace KnifeGame.Managers
 {
     public class ViewManager : Singleton<ViewManager>
     {
+        public event Action<View> OnViewShown;
+
         [SerializeField] private List<View> _views;
 
         public static View GetView<T>() where T : View
         {
-            return Inst._views.Where(v => v is T).First();
+            var view = Inst._views.Where(v => v is T).First();
+            Inst.OnViewShown?.Invoke(view);
+            return view;
         }
 
         public static View ShowView<T>() where T : View

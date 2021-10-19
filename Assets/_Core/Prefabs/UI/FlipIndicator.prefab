@@ -48,8 +48,8 @@ CanvasGroup:
   m_GameObject: {fileID: 617633481605838235}
   m_Enabled: 1
   m_Alpha: 1
-  m_Interactable: 1
-  m_BlocksRaycasts: 1
+  m_Interactable: 0
+  m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
 --- !u!114 &1394697835414582041
 MonoBehaviour:
@@ -206,7 +206,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls: []
   m_FontData:
-    m_Font: {fileID: 12800000, guid: a591950935b57b34e8ce783eeae5db8a, type: 3}
+    m_Font: {fileID: 12800000, guid: 4763e01c68d73e945b350b856fed4b17, type: 3}
     m_FontSize: 50
     m_FontStyle: 0
     m_BestFit: 0

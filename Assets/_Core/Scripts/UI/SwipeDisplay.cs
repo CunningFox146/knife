@@ -1,5 +1,6 @@
 using DG.Tweening;
 using KnifeGame.Managers;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -18,6 +19,7 @@ namespace KnifeGame.UI
         private RectTransform _end;
         private List<RectTransform> _dots;
         private Vector3 _swipeStart;
+        private bool _eventsActive;
 
         private Tween _fadeTween;
 
@@ -42,9 +44,40 @@ namespace KnifeGame.UI
 
         private void Start()
         {
+
+            SwipeManager.Inst.OnActiveChanged += OnActiveChangedHandler;
+
+            EnableEvents();
+        }
+
+        private void OnActiveChangedHandler(bool isActive)
+        {
+            if (isActive == _eventsActive) return;
+            if (isActive)
+            {
+                EnableEvents();
+            }
+            else
+            {
+                DisableEvents();
+            }
+        }
+
+        private void EnableEvents()
+        {
+            _eventsActive = true;
             SwipeManager.Inst.OnSwipeStart += OnSwipeStartHandler;
             SwipeManager.Inst.OnSwipeDrag += OnSwipeDragHandler;
-            SwipeManager.Inst.OnSwipeEnd += (pos) => Disable();
+            SwipeManager.Inst.OnSwipeEnd += OnSwipeEndHandler;
+        }
+
+
+        private void DisableEvents()
+        {
+            _eventsActive = false;
+            SwipeManager.Inst.OnSwipeStart -= OnSwipeStartHandler;
+            SwipeManager.Inst.OnSwipeDrag -= OnSwipeDragHandler;
+            SwipeManager.Inst.OnSwipeEnd -= OnSwipeEndHandler;
         }
 
         private Vector3 ConvertPos(Vector2 pos)
@@ -119,6 +152,11 @@ namespace KnifeGame.UI
                 dot.position = dist * percent + _swipeStart;
                 dot.localScale = Vector3.one * (0.5f + percent * 0.5f);
             }
+        }
+
+        private void OnSwipeEndHandler(Vector2 obj)
+        {
+            Disable();
         }
     }
 }
