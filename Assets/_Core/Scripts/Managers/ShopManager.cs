@@ -83,5 +83,15 @@ namespace KnifeGame.Managers
                 coin.GetComponent<Rigidbody>().AddForce(direction * Random.Range(2f, 3f), ForceMode.Impulse);
             }
         }
+
+        public bool BuyItem(ShopItem item)
+        {
+            if (item.itemPrice > CoinsCount) return false;
+
+            CoinsCount -= item.itemPrice;
+            _ownedItems.Add(item.type);
+
+            return true;
+        }
     }
 }

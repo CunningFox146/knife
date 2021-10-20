@@ -3,6 +3,7 @@ using KnifeGame.Scripts.UI.Shop;
 using KnifeGame.Shop;
 using KnifeGame.UI.Shop;
 using System;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -23,6 +24,7 @@ namespace KnifeGame.UI.Views
         [SerializeField] private RectTransform _itemContainer;
 
         private ShopItem _selectedItem;
+        private List<ShopItemTile> _tiles;
 
         public ShopItem SelectedItem
         {
@@ -41,17 +43,19 @@ namespace KnifeGame.UI.Views
             _buyBtn.onClick.AddListener(BuySelectedItem);
             _playBtn.onClick.AddListener(PlayGame);
 
+            _tiles = new List<ShopItemTile>();
             foreach (ShopItem item in items.items)
             {
                 var tile = Instantiate(_itemPrefab, _itemContainer);
                 var shopItem = tile.GetComponent<ShopItemTile>();
                 shopItem.Init(item, () => SelectItem(item));
+                _tiles.Add(shopItem);
             }
         }
 
         private void PlayGame()
         {
-            GameManager.Inst.SetKnife(SelectedItem);
+            ShopManager.Inst.SelectedItem = SelectedItem;
 
             ViewManager.HideAllViews();
             ViewManager.ShowView<MainView>();
@@ -60,15 +64,23 @@ namespace KnifeGame.UI.Views
 
         private void BuySelectedItem()
         {
-            
+            if (ShopManager.Inst.BuyItem(SelectedItem))
+            {
+                //TODO Effects and Sound
+                UpdateButtons(true);
+                _tiles.ForEach((item) => item.UpdateIsOwned());
+            }
         }
 
         private void SelectItem(ShopItem item)
         {
             SelectedItem = item;
 
-            bool isOwned = ShopManager.Inst.IsItemOwned(item.type);
+            UpdateButtons(ShopManager.Inst.IsItemOwned(item.type));
+        }
 
+        private void UpdateButtons(bool isOwned)
+        {
             _playBtn.gameObject.SetActive(isOwned);
             _buyBtn.gameObject.SetActive(!isOwned);
         }

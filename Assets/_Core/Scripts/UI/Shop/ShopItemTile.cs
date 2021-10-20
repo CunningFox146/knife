@@ -42,9 +42,14 @@ namespace KnifeGame.Scripts.UI.Shop
             model.transform.eulerAngles = item.rotation;
             model.transform.SetLayerInChildren(LayerMask.NameToLayer("UI"));
 
-            IsOwned = ShopManager.Inst.IsItemOwned(item.type);
+            UpdateIsOwned();
 
             _button.onClick.AddListener(()=> onClick.Invoke());
+        }
+
+        public void UpdateIsOwned()
+        {
+            IsOwned = ShopManager.Inst.IsItemOwned(ShopItem.type);
         }
     }
 }

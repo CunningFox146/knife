@@ -887,10 +887,10 @@ RectTransform:
   m_Father: {fileID: 1262806578}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -25}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &389147736
 MonoBehaviour:
@@ -1560,16 +1560,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2526316ad32534c49bca3b7ebb8c3517, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!1 &532082583 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 4069999522121143190, guid: e1c727b7df884b44ea69d8144332d71b, type: 3}
-  m_PrefabInstance: {fileID: 4069999522384493569}
-  m_PrefabAsset: {fileID: 0}
 --- !u!224 &532082584 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4069999522121143193, guid: e1c727b7df884b44ea69d8144332d71b, type: 3}
   m_PrefabInstance: {fileID: 4069999522384493569}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &532082585 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4069999522121143192, guid: e1c727b7df884b44ea69d8144332d71b, type: 3}
+  m_PrefabInstance: {fileID: 4069999522384493569}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &558997397
 GameObject:
   m_ObjectHideFlags: 0
@@ -1602,10 +1608,10 @@ RectTransform:
   m_Father: {fileID: 737094415}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 40, y: -25}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &558997399
 MonoBehaviour:
@@ -2684,10 +2690,10 @@ RectTransform:
   m_Father: {fileID: 1262806578}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 40, y: -25}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1187438928
 MonoBehaviour:
@@ -3157,10 +3163,10 @@ RectTransform:
   m_Father: {fileID: 737094415}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 160, y: -25}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1287209606
 MonoBehaviour:
@@ -4278,10 +4284,10 @@ RectTransform:
   m_Father: {fileID: 1262806578}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 160, y: -25}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1616836611
 MonoBehaviour:
@@ -4524,10 +4530,10 @@ RectTransform:
   m_Father: {fileID: 737094415}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 1}
-  m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 100, y: -25}
-  m_SizeDelta: {x: 50, y: 50}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1751506916
 MonoBehaviour:
@@ -5425,7 +5431,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &2103982420
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5439,8 +5445,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _itemPrice: {fileID: 1785382587}
-  _buyBtn: {fileID: 1264123853}
-  _playBtn: {fileID: 532082583}
+  _buyBtn: {fileID: 1264123855}
+  _playBtn: {fileID: 532082585}
   _itemName: {fileID: 403008644}
   _display: {fileID: 1656396294}
   _weightContainer: {fileID: 1467499379}

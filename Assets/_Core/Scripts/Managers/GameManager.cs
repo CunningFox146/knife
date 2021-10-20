@@ -18,17 +18,13 @@ namespace KnifeGame.Managers
 
         private void Start()
         {
-            SetKnife(ShopManager.Inst.SelectedItem);
+            OnItemChangedHandler(ShopManager.Inst.SelectedItem);
 
+            ShopManager.Inst.OnItemChanged += OnItemChangedHandler;
             SwipeManager.Inst.OnSwipeStart += OnSwipeStartHandler;
         }
 
-        private void OnSwipeStartHandler(Vector2 obj)
-        {
-            OnGameStart?.Invoke();
-        }
-
-        public void SetKnife(ShopItem selectedItem)
+        private void OnItemChangedHandler(ShopItem selectedItem)
         {
             ScoreManager.Inst.ResetScore();
 
@@ -38,6 +34,11 @@ namespace KnifeGame.Managers
             }
             Knife = Instantiate(selectedItem.prefab).GetComponent<KnifeController>();
             Knife.transform.position = _startPos;
+        }
+
+        private void OnSwipeStartHandler(Vector2 obj)
+        {
+            OnGameStart?.Invoke();
         }
     }
 }
