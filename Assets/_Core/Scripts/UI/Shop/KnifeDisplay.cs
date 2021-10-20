@@ -2,16 +2,37 @@ using DG.Tweening;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using KnifeGame.Util;
 
 namespace KnifeGame.UI.Shop
 {
     public class KnifeDisplay : MonoBehaviour
     {
-        [SerializeField] private RectTransform _model;
+        [SerializeField] private RectTransform _modelContainer;
+        [SerializeField] private Transform _model;
+
+        private Tween _modelAppearTween;
 
         public void Start()
         {
-            _model.DORotate(Vector3.up * 360f, 5f, RotateMode.FastBeyond360).SetLoops(-1);
+            _modelContainer.DORotate(Vector3.up * 360f, 5f, RotateMode.FastBeyond360).SetLoops(-1);
+        }
+
+        public void SetModel(GameObject modelPrefab)
+        {
+            if (_model != null)
+            {
+                Destroy(_model.gameObject);
+            }
+
+            _model = Instantiate(modelPrefab, _modelContainer).transform;
+            _model.SetLayerInChildren(LayerMask.NameToLayer("UI"));
+            _model.eulerAngles = Vector3.forward * -30f;
+            _model.localScale = Vector3.zero;
+
+            _modelAppearTween?.Kill();
+            _modelAppearTween = _model.DOScale(Vector3.one * 125f, 0.5f)
+                .SetEase(Ease.OutBack);
         }
     }
 }

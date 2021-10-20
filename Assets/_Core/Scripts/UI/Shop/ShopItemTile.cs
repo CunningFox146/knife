@@ -1,13 +1,9 @@
-﻿using UnityEngine;
-using UnityEngine.UI;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using KnifeGame.Managers;
 using KnifeGame.Shop;
-using KnifeGame.Managers;
 using KnifeGame.Util;
+using System;
+using UnityEngine;
+using UnityEngine.UI;
 
 namespace KnifeGame.Scripts.UI.Shop
 {
@@ -17,25 +13,38 @@ namespace KnifeGame.Scripts.UI.Shop
         [SerializeField] private RectTransform _itemContainer;
 
         private Button _button;
+        private ShopItem _shopItem;
+        private bool _isOwned = false;
+
+        public ShopItem ShopItem { get => _shopItem; private set => _shopItem = value; }
+        public bool IsOwned
+        {
+            get => _isOwned;
+            private set
+            {
+                _isOwned = value;
+                _disabledLayer.SetActive(!_isOwned);
+            }
+        }
 
         private void Awake()
         {
             _button = GetComponent<Button>();
         }
 
-        public void Init(ShopItem item)
+        public void Init(ShopItem item, Action onClick)
         {
+            ShopItem = item;
+
             var model = Instantiate(item.shopModel, _itemContainer);
             model.transform.localScale = new Vector3(item.scale.x, item.scale.y, 1f);
             model.transform.localPosition = item.pos;
             model.transform.eulerAngles = item.rotation;
             model.transform.SetLayerInChildren(LayerMask.NameToLayer("UI"));
 
-            if (ShopManager.Inst.IsItemOwned(item.type))
-            {
-                _disabledLayer.SetActive(false);
-            }
+            IsOwned = ShopManager.Inst.IsItemOwned(item.type);
 
+            _button.onClick.AddListener(()=> onClick.Invoke());
         }
     }
 }

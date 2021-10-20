@@ -1,9 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using DG.Tweening;
-using KnifeGame.Managers;
+﻿using KnifeGame.Managers;
 using KnifeGame.Scripts.UI.Shop;
+using KnifeGame.Shop;
 using KnifeGame.UI.Shop;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,8 +9,10 @@ namespace KnifeGame.UI.Views
 {
     public class ShopView : AnimatedView
     {
-        [SerializeField] private Text _itemName;
         [SerializeField] private Text _itemPrice;
+        [SerializeField] private GameObject _buyBtn;
+        [SerializeField] private GameObject _playBtn;
+        [SerializeField] private Text _itemName;
         [SerializeField] private KnifeDisplay _display;
         [Space]
         [SerializeField] private StatsContainer _weightContainer;
@@ -22,15 +21,56 @@ namespace KnifeGame.UI.Views
         [SerializeField] private GameObject _itemPrefab;
         [SerializeField] private RectTransform _itemContainer;
 
+        private ShopItem _selectedItem;
+
+        public ShopItem SelectedItem
+        {
+            get => _selectedItem;
+            private set
+            {
+                _selectedItem = value;
+                UpdateSelectedItem();
+            }
+        }
+
         private void Start()
         {
             var items = ShopManager.Inst.ItemList;
 
-            foreach (var item in items.items)
+            foreach (ShopItem item in items.items)
             {
                 var tile = Instantiate(_itemPrefab, _itemContainer);
-                tile.GetComponent<ShopItemTile>().Init(item);
+                var shopItem = tile.GetComponent<ShopItemTile>();
+                shopItem.Init(item, () => OnItemClicked(item));
             }
+        }
+
+        private void OnItemClicked(ShopItem item)
+        {
+            SelectedItem = item;
+
+            bool isOwned = ShopManager.Inst.IsItemOwned(item.type);
+
+            _playBtn.SetActive(isOwned);
+            _buyBtn.SetActive(!isOwned);
+        }
+
+        public override void Show()
+        {
+            base.Show();
+
+            SelectedItem = ShopManager.Inst.SelectedItem;
+        }
+
+        private void UpdateSelectedItem()
+        {
+            _display.SetModel(SelectedItem.shopModel);
+
+            _weightContainer.SetCount(SelectedItem.weight);
+            _scoreContainer.SetCount(SelectedItem.perFlip);
+
+            _itemPrice.text = SelectedItem.itemPrice.ToString();
+            _itemName.text = SelectedItem.itemName;
         }
     }
 }
