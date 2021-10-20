@@ -15,7 +15,9 @@ namespace KnifeGame.UI.Shop
 
         public void Start()
         {
-            _modelContainer.DORotate(Vector3.up * 360f, 5f, RotateMode.FastBeyond360).SetLoops(-1);
+            _modelContainer.DORotate(Vector3.up * 360f, 5f, RotateMode.FastBeyond360)
+                .SetEase(Ease.Linear)
+                .SetLoops(-1);
         }
 
         public void SetModel(GameObject modelPrefab)

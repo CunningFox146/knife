@@ -10,14 +10,11 @@ namespace KnifeGame.Managers
 {
     public class ShopManager : Singleton<ShopManager>
     {
-        public event Action<int> OnCoinsChanged;
         public event Action<ShopItem> OnItemChanged;
 
         [SerializeField] private ShopList _itemList;
-        [SerializeField] private GameObject _coinPrefab;
 
         private ShopItem _selectedItem;
-        private int _coinsCount;
         private List<ShopItemType> _ownedItems;
 
         public ShopList ItemList => _itemList;
@@ -34,19 +31,7 @@ namespace KnifeGame.Managers
                 _selectedItem = value;
             }
         }
-        public int CoinsCount
-        {
-            get => _coinsCount;
-            private set
-            {
-                if (_coinsCount != value)
-                {
-                    OnCoinsChanged?.Invoke(value);
-                }
-                _coinsCount = value;
-            }
-        }
-
+        
         protected override void Awake()
         {
             base.Awake();
@@ -59,36 +44,14 @@ namespace KnifeGame.Managers
             _selectedItem = _itemList.Default;
         }
 
-        private void Start()
-        {
-            ScoreManager.Inst.OnKnifeHit += OnKnifeFlipHandler;
-        }
 
         public bool IsItemOwned(ShopItemType type) => _ownedItems.Contains(type);
 
-        private void OnKnifeFlipHandler(KnifeController knife, int points)
-        {
-            if (points <= 0) return;
-
-            CoinsCount += points;
-
-            float startAngle = -Mathf.PI * 0.5f;
-            for (int i = 0; i < points; i++)
-            {
-                float angle = i / (float)points * Mathf.PI * 2 + startAngle;
-                Vector3 direction = new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle));
-                var coin = Instantiate(_coinPrefab);
-
-                coin.transform.position = knife.transform.position + Vector3.up + direction * 0.5f;
-                coin.GetComponent<Rigidbody>().AddForce(direction * Random.Range(2f, 3f), ForceMode.Impulse);
-            }
-        }
-
         public bool BuyItem(ShopItem item)
         {
-            if (item.itemPrice > CoinsCount) return false;
+            if (item.itemPrice > ScoreManager.Inst.CoinsCount) return false;
 
-            CoinsCount -= item.itemPrice;
+            ScoreManager.Inst.CoinsCount -= item.itemPrice;
             _ownedItems.Add(item.type);
 
             return true;

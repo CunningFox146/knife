@@ -4423,6 +4423,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
+  _coinPrefab: {fileID: 1182789115057670241, guid: 5e3ee984bebb040498801654efb154e1, type: 3}
 --- !u!1 &1689952006
 GameObject:
   m_ObjectHideFlags: 0
@@ -5021,7 +5022,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dontDestroyOnLoad: 1
   _itemList: {fileID: 11400000, guid: 2e6ace2fd9ff2ac45a838d71f060f26b, type: 2}
-  _coinPrefab: {fileID: 1182789115057670241, guid: 5e3ee984bebb040498801654efb154e1, type: 3}
 --- !u!1 &1933886753
 GameObject:
   m_ObjectHideFlags: 0
