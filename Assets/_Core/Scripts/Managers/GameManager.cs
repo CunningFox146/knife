@@ -1,4 +1,5 @@
 ﻿using KnifeGame.Knife;
+using KnifeGame.Shop;
 using KnifeGame.Util;
 using System;
 using UnityEngine;
@@ -17,8 +18,7 @@ namespace KnifeGame.Managers
 
         private void Start()
         {
-            Knife = Instantiate(ShopManager.Inst.SelectedItem.prefab).GetComponent<KnifeController>();
-            Knife.transform.position = _startPos;
+            SetKnife(ShopManager.Inst.SelectedItem);
 
             SwipeManager.Inst.OnSwipeStart += OnSwipeStartHandler;
         }
@@ -26,6 +26,16 @@ namespace KnifeGame.Managers
         private void OnSwipeStartHandler(Vector2 obj)
         {
             OnGameStart?.Invoke();
+        }
+
+        public void SetKnife(ShopItem selectedItem)
+        {
+            if (Knife != null)
+            {
+                Destroy(Knife.gameObject);
+            }
+            Knife = Instantiate(selectedItem.prefab).GetComponent<KnifeController>();
+            Knife.transform.position = _startPos;
         }
     }
 }

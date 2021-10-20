@@ -2,6 +2,7 @@
 using KnifeGame.Scripts.UI.Shop;
 using KnifeGame.Shop;
 using KnifeGame.UI.Shop;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,8 +11,8 @@ namespace KnifeGame.UI.Views
     public class ShopView : AnimatedView
     {
         [SerializeField] private Text _itemPrice;
-        [SerializeField] private GameObject _buyBtn;
-        [SerializeField] private GameObject _playBtn;
+        [SerializeField] private Button _buyBtn;
+        [SerializeField] private Button _playBtn;
         [SerializeField] private Text _itemName;
         [SerializeField] private KnifeDisplay _display;
         [Space]
@@ -37,6 +38,9 @@ namespace KnifeGame.UI.Views
         {
             var items = ShopManager.Inst.ItemList;
 
+            _buyBtn.onClick.AddListener(BuySelectedItem);
+            _playBtn.onClick.AddListener(PlayGame);
+
             foreach (ShopItem item in items.items)
             {
                 var tile = Instantiate(_itemPrefab, _itemContainer);
@@ -45,14 +49,28 @@ namespace KnifeGame.UI.Views
             }
         }
 
+        private void PlayGame()
+        {
+            GameManager.Inst.SetKnife(SelectedItem);
+
+            ViewManager.HideAllViews();
+            ViewManager.ShowView<MainView>();
+            Menu.Inst.SelectItem(null);
+        }
+
+        private void BuySelectedItem()
+        {
+            
+        }
+
         private void SelectItem(ShopItem item)
         {
             SelectedItem = item;
 
             bool isOwned = ShopManager.Inst.IsItemOwned(item.type);
 
-            _playBtn.SetActive(isOwned);
-            _buyBtn.SetActive(!isOwned);
+            _playBtn.gameObject.SetActive(isOwned);
+            _buyBtn.gameObject.SetActive(!isOwned);
         }
 
         public override void Show()
