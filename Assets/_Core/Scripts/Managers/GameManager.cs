@@ -30,6 +30,8 @@ namespace KnifeGame.Managers
 
         public void SetKnife(ShopItem selectedItem)
         {
+            ScoreManager.Inst.ResetScore();
+
             if (Knife != null)
             {
                 Destroy(Knife.gameObject);

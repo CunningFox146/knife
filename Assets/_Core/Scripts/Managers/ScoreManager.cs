@@ -52,8 +52,13 @@ namespace KnifeGame.Managers
 
         public void KnifeMiss(KnifeController knife)
         {
-            CurrentScore = 0;
+            ResetScore();
             OnKnifeMiss?.Invoke(knife);
+        }
+
+        public void ResetScore()
+        {
+            CurrentScore = 0;
         }
 
         public void KnifeFlip(KnifeController knife, int points = 1)
