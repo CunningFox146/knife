@@ -41,11 +41,11 @@ namespace KnifeGame.UI.Views
             {
                 var tile = Instantiate(_itemPrefab, _itemContainer);
                 var shopItem = tile.GetComponent<ShopItemTile>();
-                shopItem.Init(item, () => OnItemClicked(item));
+                shopItem.Init(item, () => SelectItem(item));
             }
         }
 
-        private void OnItemClicked(ShopItem item)
+        private void SelectItem(ShopItem item)
         {
             SelectedItem = item;
 
@@ -59,7 +59,7 @@ namespace KnifeGame.UI.Views
         {
             base.Show();
 
-            SelectedItem = ShopManager.Inst.SelectedItem;
+            SelectItem(ShopManager.Inst.SelectedItem);
         }
 
         private void UpdateSelectedItem()

@@ -4,6 +4,6 @@
     public enum ShopItemType
     {
         Default,
-
+        Test,
     }
 }
