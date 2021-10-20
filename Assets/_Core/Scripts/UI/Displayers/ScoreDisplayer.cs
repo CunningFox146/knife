@@ -15,7 +15,7 @@ namespace KnifeGame.UI.Displayers
 
         private void Start()
         {
-            ScoreManager.Inst.OnScoreChanged += OnScoreChangedHandler;
+            StatsManager.Inst.OnScoreChanged += OnScoreChangedHandler;
         }
 
         private void OnScoreChangedHandler(int score)

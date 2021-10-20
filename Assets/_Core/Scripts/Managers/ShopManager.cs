@@ -49,9 +49,9 @@ namespace KnifeGame.Managers
 
         public bool BuyItem(ShopItem item)
         {
-            if (item.itemPrice > ScoreManager.Inst.CoinsCount) return false;
+            if (item.itemPrice > StatsManager.Inst.CoinsCount) return false;
 
-            ScoreManager.Inst.CoinsCount -= item.itemPrice;
+            StatsManager.Inst.CoinsCount -= item.itemPrice;
             _ownedItems.Add(item.type);
 
             return true;

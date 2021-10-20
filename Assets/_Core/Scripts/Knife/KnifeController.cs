@@ -62,7 +62,7 @@ namespace KnifeGame.Knife
                 _resetCoroutine = null;
             });
 
-            ScoreManager.Inst.KnifeMiss(this);
+            StatsManager.Inst.KnifeMiss(this);
         }
 
         private void OnTriggerEnter(Collider other)
@@ -75,7 +75,7 @@ namespace KnifeGame.Knife
 
             _trail.emitting = false;
 
-            ScoreManager.Inst.KnifeHit(this, _flipsCount);
+            StatsManager.Inst.KnifeHit(this, _flipsCount);
             _flipsCount = 0;
 
             if (_isPlayingHit)
@@ -113,7 +113,7 @@ namespace KnifeGame.Knife
                 {
                     totalRot = 0f;
                     _flipsCount++;
-                    ScoreManager.Inst.KnifeFlip(this, info.perFlip);
+                    StatsManager.Inst.KnifeFlip(this, info.perFlip);
                 }
 
                 lastUp = transform.up;

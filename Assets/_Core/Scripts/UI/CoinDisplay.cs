@@ -13,9 +13,9 @@ namespace Assets.Scripts.UI
 
         private void Start()
         {
-            ScoreManager.Inst.OnCoinsChanged += OnCoinsChangedHandler;
+            StatsManager.Inst.OnCoinsChanged += OnCoinsChangedHandler;
 
-            OnCoinsChangedHandler(ScoreManager.Inst.CoinsCount);
+            OnCoinsChangedHandler(StatsManager.Inst.CoinsCount);
         }
 
         private void OnCoinsChangedHandler(int coins)

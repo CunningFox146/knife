@@ -28,7 +28,7 @@ namespace KnifeGame.UI.Views
             HideStats();
 
             GameManager.Inst.OnGameStart += OnGameStartHandler;
-            ScoreManager.Inst.OnKnifeFlip += OnKnifeFlipHandler;
+            StatsManager.Inst.OnKnifeFlip += OnKnifeFlipHandler;
         }
 
         private void OnKnifeFlipHandler(KnifeController knife, int points)

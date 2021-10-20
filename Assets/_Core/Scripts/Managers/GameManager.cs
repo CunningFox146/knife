@@ -26,7 +26,7 @@ namespace KnifeGame.Managers
 
         private void OnItemChangedHandler(ShopItem selectedItem)
         {
-            ScoreManager.Inst.ResetScore();
+            StatsManager.Inst.ResetScore();
 
             if (Knife != null)
             {

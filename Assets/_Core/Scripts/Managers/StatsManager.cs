@@ -6,7 +6,7 @@ using Random = UnityEngine.Random;
 
 namespace KnifeGame.Managers
 {
-    public class ScoreManager : Singleton<ScoreManager>
+    public class StatsManager : Singleton<StatsManager>
     {
         public event Action<int> OnCoinsChanged;
 
