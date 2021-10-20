@@ -15,7 +15,7 @@ namespace KnifeGame.Managers
         [SerializeField] private ShopList _itemList;
 
         private ShopItem _selectedItem;
-        private List<ShopItemType> _ownedItems;
+        private List<int> _ownedItems;
 
         public ShopList ItemList => _itemList;
 
@@ -36,7 +36,7 @@ namespace KnifeGame.Managers
         {
             base.Awake();
 
-            _ownedItems = new List<ShopItemType>();
+            _ownedItems = new List<int>();
             // TODO: Load owned items
             _ownedItems.Add(_itemList.defaultItem);
 
@@ -45,14 +45,14 @@ namespace KnifeGame.Managers
         }
 
 
-        public bool IsItemOwned(ShopItemType type) => _ownedItems.Contains(type);
+        public bool IsItemOwned(int id) => _ownedItems.Contains(id);
 
         public bool BuyItem(ShopItem item)
         {
             if (item.itemPrice > StatsManager.Inst.CoinsCount) return false;
 
             StatsManager.Inst.CoinsCount -= item.itemPrice;
-            _ownedItems.Add(item.type);
+            _ownedItems.Add(item.itemID);
 
             return true;
         }

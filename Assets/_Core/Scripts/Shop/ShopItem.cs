@@ -8,7 +8,7 @@ namespace KnifeGame.Shop
     {
         public string itemName;
         public int itemPrice;
-        public ShopItemType type;
+        public int itemID;
         public GameObject prefab;
         [Range(1, 3)]
         public int weight = 1;

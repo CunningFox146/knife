@@ -49,7 +49,7 @@ namespace KnifeGame.Scripts.UI.Shop
 
         public void UpdateIsOwned()
         {
-            IsOwned = ShopManager.Inst.IsItemOwned(ShopItem.type);
+            IsOwned = ShopManager.Inst.IsItemOwned(ShopItem.itemID);
         }
     }
 }

@@ -76,7 +76,7 @@ namespace KnifeGame.UI.Views
         {
             SelectedItem = item;
 
-            UpdateButtons(ShopManager.Inst.IsItemOwned(item.type));
+            UpdateButtons(ShopManager.Inst.IsItemOwned(item.itemID));
         }
 
         private void UpdateButtons(bool isOwned)

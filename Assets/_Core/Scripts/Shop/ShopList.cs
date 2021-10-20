@@ -6,10 +6,10 @@ namespace KnifeGame.Shop
     [CreateAssetMenu(fileName = "ShopList", menuName = "Scriptable Objects/ShopList")]
     public class ShopList : ScriptableObject
     {
-        public ShopItemType defaultItem = ShopItemType.Default;
+        public int defaultItem = 0;
         public List<ShopItem> items;
 
-        public ShopItem GetItem(ShopItemType type) => items.Find(item => item.type == type);
+        public ShopItem GetItem(int id) => items.Find(item => item.itemID == id);
         public ShopItem Default => GetItem(defaultItem);
     }
 }
