@@ -42,7 +42,7 @@ namespace KnifeGame.Managers
 
         public void KnifeHit(KnifeController knife, int flips)
         {
-            CurrentScore += flips + 1;
+            CurrentScore += (flips + 1) * knife.info.perFlip;
             if (CurrentScore > BestScore)
             {
                 BestScore = CurrentScore;

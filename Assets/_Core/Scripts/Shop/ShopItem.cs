@@ -19,5 +19,12 @@ namespace KnifeGame.Shop
         public Vector2 pos = new Vector2(-100f, 0f);
         public Vector2 scale = Vector2.one * 65f;
         public Vector3 rotation = Vector3.forward * 45f;
+
+        public float RotationSpeed => weight switch
+        {
+            3 => 2.5f,
+            2 => 6f,
+            _ => 15f,
+        };
     }
 }

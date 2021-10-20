@@ -75,7 +75,7 @@ namespace KnifeGame.Managers
             float startAngle = -Mathf.PI * 0.5f;
             for (int i = 0; i < points; i++)
             {
-                float angle = i / (float)points * Mathf.PI + startAngle;
+                float angle = i / (float)points * Mathf.PI * 2 + startAngle;
                 Vector3 direction = new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle));
                 var coin = Instantiate(_coinPrefab);
 

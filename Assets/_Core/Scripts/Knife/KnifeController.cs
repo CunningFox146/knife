@@ -2,15 +2,17 @@ using KnifeGame.Managers;
 using KnifeGame.Util;
 using System.Collections;
 using UnityEngine;
+using KnifeGame.Shop;
 
 namespace KnifeGame.Knife
 {
     public class KnifeController : MonoBehaviour
     {
-        [SerializeField] private float _rotationSpeed = 20f;
         [SerializeField] private float _launchSpeed = 20f;
         [SerializeField] private bool _isPlayingHit = true;
         [SerializeField] private TrailRenderer _trail;
+
+        public ShopItem info;
 
         private Rigidbody _rb;
         private Animator _animator;
@@ -111,7 +113,7 @@ namespace KnifeGame.Knife
                 {
                     totalRot = 0f;
                     _flipsCount++;
-                    ScoreManager.Inst.KnifeFlip(this);
+                    ScoreManager.Inst.KnifeFlip(this, info.perFlip);
                 }
 
                 lastUp = transform.up;
@@ -127,6 +129,8 @@ namespace KnifeGame.Knife
             Debug.Log($"Launch: {direction}");
 
             float rotDir = direction.x <= 0f ? 1f : -1f;
+            float rotation = info.RotationSpeed * rotDir;
+            Debug.Log($"Rotation: {rotation}");
 
             _launchStart = Time.time;
             _isLaunched = true;
@@ -137,7 +141,7 @@ namespace KnifeGame.Knife
 
             _rb.isKinematic = false;
             _rb.AddForce(direction * _launchSpeed, ForceMode.Impulse);
-            _rb.AddTorque(0f, 0f, _rotationSpeed * rotDir, ForceMode.Impulse);
+            _rb.AddTorque(0f, 0f, rotation, ForceMode.Impulse);
         }
     }
 }

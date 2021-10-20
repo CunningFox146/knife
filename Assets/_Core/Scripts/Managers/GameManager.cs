@@ -34,6 +34,7 @@ namespace KnifeGame.Managers
             }
             Knife = Instantiate(selectedItem.prefab).GetComponent<KnifeController>();
             Knife.transform.position = _startPos;
+            Knife.info = selectedItem;
         }
 
         private void OnSwipeStartHandler(Vector2 obj)
