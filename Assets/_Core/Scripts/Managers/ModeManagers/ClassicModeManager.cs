@@ -19,11 +19,12 @@ namespace KnifeGame.Managers.ModeManagers
 
             stats.KnifeHit(knife, flips);
             stats.CurrentScore += (flips + 1) * knife.info.perFlip;
+            stats.CoinsCount += flips;
             if (stats.CurrentScore > stats.BestScore)
             {
                 stats.BestScore = stats.CurrentScore;
             }
-
+                        
             SpawnCoins(knife, flips);
         }
 
@@ -36,8 +37,6 @@ namespace KnifeGame.Managers.ModeManagers
         private void SpawnCoins(KnifeController knife, int points)
         {
             if (points <= 0) return;
-
-            StatsManager.Inst.CoinsCount += points;
 
             float startAngle = -Mathf.PI * 0.5f;
             for (int i = 0; i < points; i++)
