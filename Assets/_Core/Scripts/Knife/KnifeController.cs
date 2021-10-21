@@ -73,12 +73,15 @@ namespace KnifeGame.Knife
                 _resetCoroutine = null;
             });
 
-            StatsManager.Inst.KnifeMiss(this);
+            OnKnifeMiss?.Invoke(this);
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (!_isLaunched || _resetCoroutine != null || !CanCollide || !other.CompareTag("Platform")) return;
+
+
+            OnKnifeHit(this, _flipsCount);
 
             _launchStart = 999;
             _rb.isKinematic = true;
@@ -86,14 +89,12 @@ namespace KnifeGame.Knife
 
             _trail.emitting = false;
 
-            StatsManager.Inst.KnifeHit(this, _flipsCount);
             _flipsCount = 0;
 
             if (_isPlayingHit)
             {
                 _animator.SetTrigger(_hitHash);
             }
-
         }
 
         private void OnSwipeHandler(Vector3 direction)
@@ -125,7 +126,8 @@ namespace KnifeGame.Knife
                 {
                     totalRot = 0f;
                     _flipsCount++;
-                    StatsManager.Inst.KnifeFlip(this, info.perFlip);
+
+                    OnKnifeFlip(this, info.perFlip);
                 }
 
                 lastUp = transform.up;

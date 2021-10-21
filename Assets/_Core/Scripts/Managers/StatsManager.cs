@@ -54,6 +54,8 @@ namespace KnifeGame.Managers
             }
         }
 
+        public void ResetScore() => CurrentScore = 0;
+
         public void KnifeHit(KnifeController knife, int flips)
         {
             OnKnifeHit?.Invoke(knife, flips);

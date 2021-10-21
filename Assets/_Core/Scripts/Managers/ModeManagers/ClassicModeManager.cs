@@ -1,9 +1,4 @@
 ﻿using KnifeGame.Knife;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -13,30 +8,29 @@ namespace KnifeGame.Managers.ModeManagers
     {
         [SerializeField] private GameObject _coinPrefab;
 
-        protected override void Init()
+        protected override void OnKnifeFlipHandler(KnifeController knife, int score)
         {
-            OnKnifeHit += StatsManager.Inst.KnifeHit;
-            OnKnifeFlip += OnKnifeFlipHandler;
-            OnKnifeMiss += StatsManager.Inst.KnifeMiss;
-
-            OnKnifeFlip += SpawnCoins;
-            //ResetScore(); KnifeMiss
-            // Knife hit
-            /*
-            
-            */
+            StatsManager.Inst.KnifeFlip(knife, score);
         }
 
-        private void OnKnifeFlipHandler(KnifeController knife, int flips)
+        protected override void OnKnifeHitHandler(KnifeController knife, int flips)
         {
             var stats = StatsManager.Inst;
 
-            stats.KnifeFlip(knife, flips);
+            stats.KnifeHit(knife, flips);
             stats.CurrentScore += (flips + 1) * knife.info.perFlip;
             if (stats.CurrentScore > stats.BestScore)
             {
                 stats.BestScore = stats.CurrentScore;
             }
+
+            SpawnCoins(knife, flips);
+        }
+
+        protected override void OnKnifeMissHandler(KnifeController knife)
+        {
+            StatsManager.Inst.CurrentScore = 0;
+            StatsManager.Inst.KnifeMiss(knife);
         }
 
         private void SpawnCoins(KnifeController knife, int points)
