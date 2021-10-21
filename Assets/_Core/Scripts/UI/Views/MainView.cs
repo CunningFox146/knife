@@ -39,9 +39,12 @@ namespace KnifeGame.UI.Views
             Vector3 screenPoint = _uiCamera.WorldToScreenPoint(knife.transform.position);
             RectTransformUtility.ScreenPointToLocalPointInRectangle(transform.parent.GetComponent<RectTransform>(), screenPoint, _uiCamera, out Vector2 result);
 
-            var indicator = Instantiate(_flipPrefab, transform);
-            ((RectTransform)indicator.transform).anchoredPosition = result;
-            indicator.GetComponent<FlipIndicator>().OnFlip(points, _score);
+            if (_flipPrefab != null)
+            {
+                var indicator = Instantiate(_flipPrefab, transform);
+                ((RectTransform)indicator.transform).anchoredPosition = result;
+                indicator.GetComponent<FlipIndicator>().OnFlip(points, _score);
+            }
         }
 
         private void OnGameStartHandler()
