@@ -63,10 +63,7 @@ namespace KnifeGame.Knife
             _isLaunched = false;
             _flipsCount = 0;
 
-            if (GameManager.Inst.Settings.resetOnHit)
-            {
-                ResetKnife();
-            }
+            ResetKnife();
 
             OnKnifeMiss?.Invoke(this);
         }
@@ -84,7 +81,10 @@ namespace KnifeGame.Knife
 
             _trail.emitting = false;
 
-            ResetKnife();
+            if (GameManager.Inst.Settings.resetOnHit)
+            {
+                ResetKnife();
+            }
 
             _flipsCount = 0;
 
