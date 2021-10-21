@@ -447,6 +447,7 @@ MonoBehaviour:
   _coinPrefab: {fileID: 1182789115057670241, guid: 5e3ee984bebb040498801654efb154e1, type: 3}
   _target: {fileID: 139478391}
   _targetSize: 2.5
+  _maxScore: 6
 --- !u!1 &522329785
 GameObject:
   m_ObjectHideFlags: 0
@@ -654,7 +655,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3319257720792174460, guid: 1ce6f5c22c1c8d5489f0598ce8009e4c, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 2.555
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3319257720792174460, guid: 1ce6f5c22c1c8d5489f0598ce8009e4c, type: 3}
       propertyPath: m_LocalPosition.z
