@@ -2,7 +2,6 @@
 using KnifeGame.Scripts.UI.Shop;
 using KnifeGame.Shop;
 using KnifeGame.UI.Shop;
-using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -76,7 +75,7 @@ namespace KnifeGame.UI.Views
         {
             SelectedItem = item;
 
-            UpdateButtons(ShopManager.Inst.IsItemOwned(item.itemID));
+            UpdateButtons(ShopManager.Inst.IsItemOwned(item.itemId));
         }
 
         private void UpdateButtons(bool isOwned)

@@ -1,10 +1,8 @@
-using KnifeGame.Knife;
 using KnifeGame.Shop;
 using KnifeGame.Util;
 using System;
-using UnityEngine;
 using System.Collections.Generic;
-using Random = UnityEngine.Random;
+using UnityEngine;
 
 namespace KnifeGame.Managers
 {
@@ -31,7 +29,7 @@ namespace KnifeGame.Managers
                 _selectedItem = value;
             }
         }
-        
+
         protected override void Awake()
         {
             base.Awake();
@@ -52,7 +50,7 @@ namespace KnifeGame.Managers
             if (item.itemPrice > StatsManager.Inst.CoinsCount) return false;
 
             StatsManager.Inst.CoinsCount -= item.itemPrice;
-            _ownedItems.Add(item.itemID);
+            _ownedItems.Add(item.itemId);
 
             return true;
         }

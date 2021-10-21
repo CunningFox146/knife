@@ -44,12 +44,12 @@ namespace KnifeGame.Scripts.UI.Shop
 
             UpdateIsOwned();
 
-            _button.onClick.AddListener(()=> onClick.Invoke());
+            _button.onClick.AddListener(() => onClick.Invoke());
         }
 
         public void UpdateIsOwned()
         {
-            IsOwned = ShopManager.Inst.IsItemOwned(ShopItem.itemID);
+            IsOwned = ShopManager.Inst.IsItemOwned(ShopItem.itemId);
         }
     }
 }

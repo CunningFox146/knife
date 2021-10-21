@@ -1,7 +1,5 @@
 using DG.Tweening;
 using KnifeGame.Managers;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 namespace KnifeGame.World

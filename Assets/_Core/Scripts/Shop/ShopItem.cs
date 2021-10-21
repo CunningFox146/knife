@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace KnifeGame.Shop
 {
@@ -8,7 +7,7 @@ namespace KnifeGame.Shop
     {
         public string itemName;
         public int itemPrice;
-        public int itemID;
+        public int itemId;
         public GameObject prefab;
         [Range(1, 3)]
         public int weight = 1;

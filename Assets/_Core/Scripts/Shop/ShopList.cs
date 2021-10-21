@@ -9,7 +9,7 @@ namespace KnifeGame.Shop
         public int defaultItem = 0;
         public List<ShopItem> items;
 
-        public ShopItem GetItem(int id) => items.Find(item => item.itemID == id);
+        public ShopItem GetItem(int id) => items.Find(item => item.itemId == id);
         public ShopItem Default => GetItem(defaultItem);
     }
 }

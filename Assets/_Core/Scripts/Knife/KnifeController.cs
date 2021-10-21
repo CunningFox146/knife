@@ -1,8 +1,8 @@
 using KnifeGame.Managers;
+using KnifeGame.Shop;
 using KnifeGame.Util;
 using System.Collections;
 using UnityEngine;
-using KnifeGame.Shop;
 
 namespace KnifeGame.Knife
 {
@@ -88,7 +88,7 @@ namespace KnifeGame.Knife
         {
             Launch(direction);
         }
-        
+
         private void ResetKnife()
         {
             transform.position = _startPos;

@@ -1,7 +1,6 @@
-﻿using DG.Tweening;
-using KnifeGame.Managers;
-using UnityEngine.UI;
+﻿using KnifeGame.Managers;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace Assets.Scripts.UI
 {
