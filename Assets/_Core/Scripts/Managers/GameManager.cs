@@ -9,12 +9,24 @@ namespace KnifeGame.Managers
     public class GameManager : Singleton<GameManager>
     {
         public event Action OnGameStart;
+        public event Action<KnifeController, KnifeController> OnKnifeChanged;
 
         [SerializeField] private Vector3 _startPos;
 
         private KnifeController _knife;
 
-        public KnifeController Knife { get => _knife; private set => _knife = value; }
+        public KnifeController Knife
+        {
+            get => _knife;
+            private set
+            {
+                if (_knife != value)
+                {
+                    OnKnifeChanged?.Invoke(_knife, value);
+                }
+                _knife = value;
+            }
+        }
 
         private void Start()
         {

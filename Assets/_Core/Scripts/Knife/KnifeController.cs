@@ -1,6 +1,8 @@
 using KnifeGame.Managers;
+using KnifeGame.Managers.ModeManagers;
 using KnifeGame.Shop;
 using KnifeGame.Util;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -8,6 +10,10 @@ namespace KnifeGame.Knife
 {
     public class KnifeController : MonoBehaviour
     {
+        public event Action<KnifeController, int> OnKnifeFlip;
+        public event Action<KnifeController, int> OnKnifeHit;
+        public event Action<KnifeController> OnKnifeMiss;
+
         [SerializeField] private float _launchSpeed = 20f;
         [SerializeField] private bool _isPlayingHit = true;
         [SerializeField] private TrailRenderer _trail;
@@ -48,6 +54,11 @@ namespace KnifeGame.Knife
             SwipeManager.Inst.OnSwipe -= OnSwipeHandler;
         }
 
+        public void Init()
+        {
+
+        }
+
         private void OnCollisionEnter(Collision collision)
         {
             if (!_isLaunched || !CanCollide) return;
@@ -82,6 +93,7 @@ namespace KnifeGame.Knife
             {
                 _animator.SetTrigger(_hitHash);
             }
+
         }
 
         private void OnSwipeHandler(Vector3 direction)
