@@ -1,4 +1,5 @@
 ﻿using KnifeGame.Knife;
+using KnifeGame.Managers.ModeManagers;
 using KnifeGame.Shop;
 using KnifeGame.Util;
 using System;
@@ -11,6 +12,7 @@ namespace KnifeGame.Managers
         public event Action OnGameStart;
         public event Action<KnifeController, KnifeController> OnKnifeChanged;
 
+        [SerializeField] private ModeSettings _settings;
         [SerializeField] private Vector3 _startPos;
 
         private KnifeController _knife;
@@ -27,6 +29,8 @@ namespace KnifeGame.Managers
                 _knife = value;
             }
         }
+
+        public ModeSettings Settings { get => _settings; private set => _settings = value; }
 
         private void Start()
         {

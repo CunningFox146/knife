@@ -54,11 +54,6 @@ namespace KnifeGame.Knife
             SwipeManager.Inst.OnSwipe -= OnSwipeHandler;
         }
 
-        public void Init()
-        {
-
-        }
-
         private void OnCollisionEnter(Collision collision)
         {
             if (!_isLaunched || !CanCollide) return;
@@ -67,11 +62,11 @@ namespace KnifeGame.Knife
 
             _isLaunched = false;
             _flipsCount = 0;
-            _resetCoroutine = this.DelayAction(1f, () =>
+
+            if (GameManager.Inst.Settings.resetOnHit)
             {
                 ResetKnife();
-                _resetCoroutine = null;
-            });
+            }
 
             OnKnifeMiss?.Invoke(this);
         }
@@ -89,6 +84,8 @@ namespace KnifeGame.Knife
 
             _trail.emitting = false;
 
+            ResetKnife();
+
             _flipsCount = 0;
 
             if (_isPlayingHit)
@@ -104,11 +101,16 @@ namespace KnifeGame.Knife
 
         private void ResetKnife()
         {
-            transform.position = _startPos;
-            transform.rotation = new Quaternion();
+            _resetCoroutine = this.DelayAction(1f, () =>
+            {
+                transform.position = _startPos;
+                transform.rotation = new Quaternion();
 
-            _rb.velocity = Vector3.zero;
-            _rb.angularVelocity = Vector3.zero;
+                _rb.velocity = Vector3.zero;
+                _rb.angularVelocity = Vector3.zero;
+
+                _resetCoroutine = null;
+            });
         }
 
         private IEnumerator RotationCoroutine()
