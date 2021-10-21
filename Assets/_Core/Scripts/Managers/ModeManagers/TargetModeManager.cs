@@ -7,6 +7,10 @@ namespace KnifeGame.Managers.ModeManagers
     public class TargetModeManager : ModeManager<TargetModeManager>
     {
         [SerializeField] private GameObject _coinPrefab;
+        [Space]
+        [SerializeField] private Transform _target;
+        [SerializeField] private float _targetSize = 2.5f;
+        [SerializeField] private float _maxScore = 6;
 
         protected override void OnKnifeFlipHandler(KnifeController knife, int score)
         {
@@ -18,20 +22,33 @@ namespace KnifeGame.Managers.ModeManagers
             var stats = StatsManager.Inst;
 
             stats.KnifeHit(knife, flips);
-            //stats.CurrentScore += (flips + 1) * knife.info.perFlip;
-            //stats.CoinsCount += flips;
-            //if (stats.CurrentScore > stats.BestScore)
-            //{
-            //    stats.BestScore = stats.CurrentScore;
-            //}
-                        
-            SpawnCoins(knife, 3);
+
+
+            int score = CalculateScore(knife.transform.position);
+
+            stats.CurrentScore += score;
+            stats.CoinsCount += score;
+            if (stats.CurrentScore > stats.BestScore)
+            {
+                stats.BestScore = stats.CurrentScore;
+            }
+
+            SpawnCoins(knife, score);
         }
 
         protected override void OnKnifeMissHandler(KnifeController knife)
         {
             StatsManager.Inst.CurrentScore = 0;
             StatsManager.Inst.KnifeMiss(knife);
+        }
+
+        private int CalculateScore(Vector3 knifePos)
+        {
+            float center = _target.position.y + _targetSize * 0.5f;
+            float distance = Mathf.Abs(center - knifePos.y);
+            float percent = 1f - distance / (_targetSize * 0.5f);
+
+            return Mathf.Max(Mathf.CeilToInt(_maxScore * percent), 1);
         }
 
         private void SpawnCoins(KnifeController knife, int points)
