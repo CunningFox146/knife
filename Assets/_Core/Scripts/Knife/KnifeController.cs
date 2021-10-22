@@ -23,7 +23,6 @@ namespace KnifeGame.Knife
         private Rigidbody _rb;
         private Animator _animator;
         private int _hitHash;
-        private Vector3 _startPos;
 
         private int _flipsCount = 0;
         private bool _isLaunched = false;
@@ -44,8 +43,6 @@ namespace KnifeGame.Knife
 
         private void Start()
         {
-            _startPos = transform.position;
-
             SwipeManager.Inst.OnSwipe += OnSwipeHandler;
         }
 
@@ -103,7 +100,7 @@ namespace KnifeGame.Knife
         {
             _resetCoroutine = this.DelayAction(1f, () =>
             {
-                transform.position = _startPos;
+                transform.position = GameManager.Inst.StartPos;
                 transform.rotation = new Quaternion();
 
                 _rb.velocity = Vector3.zero;

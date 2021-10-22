@@ -17,6 +17,7 @@ namespace KnifeGame.Managers
 
         private KnifeController _knife;
 
+        public Vector3 StartPos => _startPos;
         public KnifeController Knife
         {
             get => _knife;
