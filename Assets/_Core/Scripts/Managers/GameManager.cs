@@ -46,6 +46,12 @@ namespace KnifeGame.Managers
             SwipeManager.Inst.OnSwipeStart += OnSwipeStartHandler;
         }
 
+        void OnApplicationQuit()
+        {
+            SaveManager.SaveCurrent();
+            Debug.Log($"Application ending after {Time.time} seconds");
+        }
+
         private void OnItemChangedHandler(ShopItem selectedItem)
         {
             StatsManager.Inst.ResetScore();
