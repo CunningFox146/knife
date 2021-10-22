@@ -13,9 +13,21 @@ namespace KnifeGame.Managers.ModeManagers
     // If you want to get ref to your class, use .Self
     public abstract class ModeManager<T> : Singleton<T> where T : Component
     {
+        protected KnifeController _knife;
+
         protected virtual void Start()
         {
             GameManager.Inst.OnKnifeChanged += OnKnifeChangedHandler;
+        }
+
+        protected virtual void OnDestroy()
+        {
+            GameManager.Inst.OnKnifeChanged -= OnKnifeChangedHandler;
+
+            if (_knife != null)
+            {
+                DisableEvents(_knife);
+            }
         }
 
         protected abstract void OnKnifeHitHandler(KnifeController knife, int flips);
@@ -38,6 +50,8 @@ namespace KnifeGame.Managers.ModeManagers
 
         private void EnableEvents(KnifeController knife)
         {
+            _knife = knife;
+
             knife.OnKnifeFlip += OnKnifeFlipHandler;
             knife.OnKnifeMiss += OnKnifeMissHandler;
             knife.OnKnifeHit += OnKnifeHitHandler;
@@ -45,6 +59,8 @@ namespace KnifeGame.Managers.ModeManagers
 
         private void DisableEvents(KnifeController knife)
         {
+            _knife = knife;
+
             knife.OnKnifeFlip -= OnKnifeFlipHandler;
             knife.OnKnifeMiss -= OnKnifeMissHandler;
             knife.OnKnifeHit -= OnKnifeHitHandler;

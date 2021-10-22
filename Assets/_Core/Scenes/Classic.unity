@@ -1265,7 +1265,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e632564e90dd10541b8d76bb5b979ee4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dontDestroyOnLoad: 1
+  dontDestroyOnLoad: 0
   _views:
   - {fileID: 1372906217}
   - {fileID: 2103982420}
@@ -2078,6 +2078,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 2022938820}
     m_Modifications:
+    - target: {fileID: 5379892072629896450, guid: 422b8801f70410c408953ae5655b0735, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5379892073221703947, guid: 422b8801f70410c408953ae5655b0735, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5379892074020641448, guid: 422b8801f70410c408953ae5655b0735, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

@@ -187,6 +187,32 @@ MonoBehaviour:
     m_VerticalOverflow: 1
     m_LineSpacing: 1
   m_Text: Game Modes
+--- !u!114 &6690748097997110008
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3675792434049695110}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cda8623b1219284db5eb4fc1ef7ad6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mode: 1
+--- !u!114 &1263677963687088869
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5400367706280850763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cda8623b1219284db5eb4fc1ef7ad6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mode: 2
 --- !u!1 &8193116995158298784
 GameObject:
   m_ObjectHideFlags: 0
@@ -267,6 +293,19 @@ MonoBehaviour:
     m_LineSpacing: 1
   m_Text: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce ultrices
     ante ut feugiat semper.
+--- !u!114 &4323580228110383807
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8970978346963293893}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cda8623b1219284db5eb4fc1ef7ad6e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mode: 0
 --- !u!1001 &826554285043215888
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -280,7 +319,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4069999521540543957, guid: e1c727b7df884b44ea69d8144332d71b, type: 3}
       propertyPath: m_Text
-      value: Play
+      value: Target
       objectReference: {fileID: 0}
     - target: {fileID: 4069999521540543957, guid: e1c727b7df884b44ea69d8144332d71b, type: 3}
       propertyPath: m_FontData.m_Font
@@ -388,6 +427,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1c727b7df884b44ea69d8144332d71b, type: 3}
+--- !u!1 &3675792434049695110 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4069999522121143190, guid: e1c727b7df884b44ea69d8144332d71b, type: 3}
+  m_PrefabInstance: {fileID: 826554285043215888}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &3675792434049695113 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4069999522121143193, guid: e1c727b7df884b44ea69d8144332d71b, type: 3}
@@ -508,7 +552,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4069999521540543957, guid: e1c727b7df884b44ea69d8144332d71b, type: 3}
       propertyPath: m_Text
-      value: Play
+      value: Classic
       objectReference: {fileID: 0}
     - target: {fileID: 4069999521540543957, guid: e1c727b7df884b44ea69d8144332d71b, type: 3}
       propertyPath: m_FontData.m_Font
@@ -517,6 +561,22 @@ PrefabInstance:
     - target: {fileID: 4069999522121143190, guid: e1c727b7df884b44ea69d8144332d71b, type: 3}
       propertyPath: m_Name
       value: BasicBtn (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069999522121143192, guid: e1c727b7df884b44ea69d8144332d71b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069999522121143192, guid: e1c727b7df884b44ea69d8144332d71b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4069999522121143192, guid: e1c727b7df884b44ea69d8144332d71b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 11500000, guid: 73c46435004d4e64bb89bf101e240261, type: 3}
+    - target: {fileID: 4069999522121143192, guid: e1c727b7df884b44ea69d8144332d71b, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4069999522121143193, guid: e1c727b7df884b44ea69d8144332d71b, type: 3}
       propertyPath: m_Pivot.x
@@ -616,6 +676,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1c727b7df884b44ea69d8144332d71b, type: 3}
+--- !u!1 &8970978346963293893 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4069999522121143190, guid: e1c727b7df884b44ea69d8144332d71b, type: 3}
+  m_PrefabInstance: {fileID: 4901282292199949651}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &8970978346963293898 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4069999522121143193, guid: e1c727b7df884b44ea69d8144332d71b, type: 3}
@@ -764,7 +829,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4069999521540543957, guid: e1c727b7df884b44ea69d8144332d71b, type: 3}
       propertyPath: m_Text
-      value: Play
+      value: Arcade
       objectReference: {fileID: 0}
     - target: {fileID: 4069999521540543957, guid: e1c727b7df884b44ea69d8144332d71b, type: 3}
       propertyPath: m_FontData.m_Font
@@ -872,6 +937,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e1c727b7df884b44ea69d8144332d71b, type: 3}
+--- !u!1 &5400367706280850763 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 4069999522121143190, guid: e1c727b7df884b44ea69d8144332d71b, type: 3}
+  m_PrefabInstance: {fileID: 8253548705057482461}
+  m_PrefabAsset: {fileID: 0}
 --- !u!224 &5400367706280850756 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 4069999522121143193, guid: e1c727b7df884b44ea69d8144332d71b, type: 3}

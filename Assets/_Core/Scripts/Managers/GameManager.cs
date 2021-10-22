@@ -46,6 +46,12 @@ namespace KnifeGame.Managers
             SwipeManager.Inst.OnSwipeStart += OnSwipeStartHandler;
         }
 
+        private void OnDestroy()
+        {
+            ShopManager.Inst.OnItemChanged -= OnItemChangedHandler;
+            SwipeManager.Inst.OnSwipeStart -= OnSwipeStartHandler;
+        }
+
         void OnApplicationQuit()
         {
             SaveManager.SaveCurrent();

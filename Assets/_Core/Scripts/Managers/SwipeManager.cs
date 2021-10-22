@@ -40,6 +40,11 @@ namespace KnifeGame.Managers
             ViewManager.Inst.OnViewShown += OnViewShown;
         }
 
+        private void OnDestroy()
+        {
+            ViewManager.Inst.OnViewShown -= OnViewShown;
+        }
+
         private void OnViewShown(View newView)
         {
             IsActive = newView is MainView;

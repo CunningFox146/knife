@@ -15,12 +15,23 @@ namespace KnifeGame.World
         [SerializeField] private float _maxHeight = 10f;
 
         private Tween _tween;
+        private Coroutine _moveCoroutine;
 
         private void Start()
         {
             Move();
             StatsManager.Inst.OnKnifeHit += (knife, flip) => Move(1f);
             StatsManager.Inst.OnKnifeMiss += (knife) => Move(1f);
+        }
+
+        private void OnDestroy()
+        {
+            if (_moveCoroutine != null)
+            {
+                StopCoroutine(_moveCoroutine);
+            }
+
+            _tween?.Kill();
         }
 
         private void Move(float delay = 0f)
@@ -33,7 +44,7 @@ namespace KnifeGame.World
 
             if (delay > 0f)
             {
-                this.DelayAction(delay, Callback);
+                _moveCoroutine = this.DelayAction(delay, Callback);
             }
             else
             {

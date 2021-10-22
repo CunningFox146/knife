@@ -17,6 +17,11 @@ namespace Assets.Scripts.UI
             OnCoinsChangedHandler(StatsManager.Inst.CoinsCount);
         }
 
+        private void OnDestroy()
+        {
+            StatsManager.Inst.OnCoinsChanged -= OnCoinsChangedHandler;
+        }
+
         private void OnCoinsChangedHandler(int coins)
         {
             _currentCoins = coins;

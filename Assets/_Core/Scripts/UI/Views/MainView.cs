@@ -31,6 +31,12 @@ namespace KnifeGame.UI.Views
             StatsManager.Inst.OnKnifeFlip += OnKnifeFlipHandler;
         }
 
+        private void OnDestroy()
+        {
+            GameManager.Inst.OnGameStart -= OnGameStartHandler;
+            StatsManager.Inst.OnKnifeFlip -= OnKnifeFlipHandler;
+        }
+
         private void OnKnifeFlipHandler(KnifeController knife, int points)
         {
             if (!SwipeManager.Inst.IsActive) return;
