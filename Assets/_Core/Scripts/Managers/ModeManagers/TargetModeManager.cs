@@ -19,6 +19,8 @@ namespace KnifeGame.Managers.ModeManagers
 
         protected override void OnKnifeHitHandler(KnifeController knife, int flips)
         {
+            base.OnKnifeHitHandler(knife, flips);
+
             var stats = StatsManager.Inst;
 
             stats.KnifeHit(knife, flips);
@@ -38,6 +40,8 @@ namespace KnifeGame.Managers.ModeManagers
 
         protected override void OnKnifeMissHandler(KnifeController knife)
         {
+            base.OnKnifeMissHandler(knife);
+
             StatsManager.Inst.CurrentScore = 0;
             StatsManager.Inst.KnifeMiss(knife);
         }

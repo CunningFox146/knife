@@ -51,10 +51,16 @@ namespace KnifeGame.Managers
                     OnCoinsChanged?.Invoke(value);
                 }
                 _coinsCount = value;
+                SaveManager.CurrentSave.coins = value;
             }
         }
 
         public void ResetScore() => CurrentScore = 0;
+
+        private void Start()
+        {
+            CoinsCount = SaveManager.CurrentSave.coins;
+        }
 
         public void KnifeHit(KnifeController knife, int flips)
         {

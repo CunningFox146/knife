@@ -18,8 +18,16 @@ namespace KnifeGame.Managers.ModeManagers
             GameManager.Inst.OnKnifeChanged += OnKnifeChangedHandler;
         }
 
-        protected abstract void OnKnifeHitHandler(KnifeController knife, int flips);
-        protected abstract void OnKnifeMissHandler(KnifeController knife);
+        protected virtual void OnKnifeHitHandler(KnifeController knife, int flips)
+        {
+            SaveManager.SaveCurrent();
+        }
+
+        protected virtual void OnKnifeMissHandler(KnifeController knife)
+        {
+            SaveManager.SaveCurrent();
+        }
+
         protected abstract void OnKnifeFlipHandler(KnifeController knife, int flips);
 
 
