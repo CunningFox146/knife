@@ -32,6 +32,12 @@ namespace KnifeGame.Managers
 
         public ModeSettings Settings { get => _settings; private set => _settings = value; }
 
+        protected override void Awake()
+        {
+            base.Awake();
+            SaveManager.LoadSave();
+        }
+
         private void Start()
         {
             OnItemChangedHandler(ShopManager.Inst.SelectedItem);

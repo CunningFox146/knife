@@ -55,6 +55,7 @@ namespace KnifeGame.UI.Views
         private void PlayGame()
         {
             ShopManager.Inst.SelectedItem = SelectedItem;
+            ShopManager.Inst.SyncAndSave();
 
             ViewManager.HideAllViews();
             ViewManager.ShowView<MainView>();

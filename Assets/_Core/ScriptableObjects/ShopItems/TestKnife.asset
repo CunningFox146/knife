@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   itemName: Test Knife
   itemPrice: 1
-  itemID: 1
+  itemId: 1
   prefab: {fileID: 3098185503865404351, guid: 79e11a4dd39ce1043914092d1c80df9b, type: 3}
   weight: 3
   perFlip: 3
