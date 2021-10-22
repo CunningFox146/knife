@@ -447,7 +447,7 @@ MonoBehaviour:
   _coinPrefab: {fileID: 1182789115057670241, guid: 5e3ee984bebb040498801654efb154e1, type: 3}
   _target: {fileID: 139478391}
   _targetSize: 2.5
-  _maxScore: 6
+  _maxScore: 3
 --- !u!1 &522329785
 GameObject:
   m_ObjectHideFlags: 0

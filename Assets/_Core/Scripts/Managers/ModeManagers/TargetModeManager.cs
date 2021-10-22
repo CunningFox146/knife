@@ -24,7 +24,7 @@ namespace KnifeGame.Managers.ModeManagers
             stats.KnifeHit(knife, flips);
 
 
-            int score = CalculateScore(knife.transform.position);
+            int score = CalculateScore(knife);
 
             stats.CurrentScore += score;
             stats.CoinsCount += score;
@@ -42,13 +42,13 @@ namespace KnifeGame.Managers.ModeManagers
             StatsManager.Inst.KnifeMiss(knife);
         }
 
-        private int CalculateScore(Vector3 knifePos)
+        private int CalculateScore(KnifeController knife)
         {
             float center = _target.position.y + _targetSize * 0.5f;
-            float distance = Mathf.Abs(center - knifePos.y);
+            float distance = Mathf.Abs(center - knife.transform.position.y);
             float percent = 1f - distance / (_targetSize * 0.5f);
 
-            return Mathf.Max(Mathf.CeilToInt(_maxScore * percent), 1);
+            return Mathf.Max(Mathf.CeilToInt(_maxScore * percent), 1) * knife.info.perFlip;
         }
 
         private void SpawnCoins(KnifeController knife, int points)
