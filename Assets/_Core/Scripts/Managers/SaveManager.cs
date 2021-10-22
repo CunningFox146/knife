@@ -69,7 +69,7 @@ namespace KnifeGame.Managers
     public class GameSave
     {
         public int coins = 0;
-        public Dictionary<GameModes, int> highScore;
+        public Dictionary<GameModes, int> highScore = new Dictionary<GameModes, int>();
 
         public List<int> ownedItems = new List<int>();
         public int selectedItem;

@@ -29,6 +29,7 @@ namespace KnifeGame.Managers
             {
                 _bestScore = value;
                 OnBestScoreChanged?.Invoke(value);
+                SaveManager.CurrentSave.highScore[ScenesManager.Inst.Mode] = value;
             }
         }
         public int CurrentScore
@@ -60,6 +61,10 @@ namespace KnifeGame.Managers
         private void Start()
         {
             CoinsCount = SaveManager.CurrentSave.coins;
+            if (SaveManager.CurrentSave.highScore.TryGetValue(ScenesManager.Inst.Mode, out int score))
+            {
+                BestScore = score;
+            }
         }
 
         public void KnifeHit(KnifeController knife, int flips)
