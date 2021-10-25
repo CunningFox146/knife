@@ -34,7 +34,7 @@ namespace KnifeGame.World.Arcade
             CreateBranch(new Vector3(_size.x * -0.5f + 1f, Random.Range(0f, _size.y * -0.5f), 0f)).Rotate(0f, -90f, 0f);
 
             // Create coins (with some % for each 1 y point)
-            float maxX = _size.x * 0.5f - 2f;
+            float maxX = 2f;
             for (float y = 0f; y < _size.y; y+=_coinsDencity)
             {
                 if (Random.Range(0f, 1f) > _coinsChance) continue;
@@ -42,7 +42,7 @@ namespace KnifeGame.World.Arcade
                 var coin = Instantiate(_coinPrefab, transform);
 
 
-                coin.transform.localPosition = new Vector3(Random.Range(0f, maxX), y, 0);
+                coin.transform.localPosition = new Vector3(Random.Range(-maxX, maxX), y, 0);
             }
         }
 

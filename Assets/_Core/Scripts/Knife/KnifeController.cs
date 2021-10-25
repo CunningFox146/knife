@@ -1,5 +1,4 @@
 using KnifeGame.Managers;
-using KnifeGame.Managers.ModeManagers;
 using KnifeGame.Shop;
 using KnifeGame.Util;
 using System;
@@ -17,6 +16,7 @@ namespace KnifeGame.Knife
         [SerializeField] private float _launchSpeed = 20f;
         [SerializeField] private bool _isPlayingHit = true;
         [SerializeField] private TrailRenderer _trail;
+        [SerializeField] private bool _isCheating = false;
 
         public ShopItem info;
 
@@ -54,7 +54,25 @@ namespace KnifeGame.Knife
         private void OnCollisionEnter(Collision collision)
         {
             if (!_isLaunched || !CanCollide) return;
+            if (_isCheating)
+            {
+                KnifeHit();
+            }
+            else
+            {
+                KnifeMiss();
+            }
+        }
 
+        private void OnTriggerEnter(Collider other)
+        {
+            if (!_isLaunched || _resetCoroutine != null || !CanCollide || !other.CompareTag("Platform")) return;
+
+            KnifeHit();
+        }
+
+        private void KnifeMiss()
+        {
             _trail.emitting = false;
 
             _isLaunched = false;
@@ -65,11 +83,8 @@ namespace KnifeGame.Knife
             OnKnifeMiss?.Invoke(this);
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void KnifeHit()
         {
-            if (!_isLaunched || _resetCoroutine != null || !CanCollide || !other.CompareTag("Platform")) return;
-
-
             OnKnifeHit(this, _flipsCount);
 
             _launchStart = 999;

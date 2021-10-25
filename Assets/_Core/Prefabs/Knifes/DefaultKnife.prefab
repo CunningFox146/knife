@@ -59,6 +59,10 @@ PrefabInstance:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 7093101212310494302, guid: 7de4273ee7b67714d8e50a684489c1e2, type: 3}
+      propertyPath: _isCheating
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7de4273ee7b67714d8e50a684489c1e2, type: 3}
 --- !u!4 &5692482383203318324 stripped

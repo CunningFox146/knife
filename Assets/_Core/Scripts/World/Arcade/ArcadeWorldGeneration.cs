@@ -1,5 +1,6 @@
 ﻿using KnifeGame.Knife;
 using KnifeGame.Managers;
+using KnifeGame.Util;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -15,16 +16,30 @@ namespace KnifeGame.World
 
         private float _lastY = 0f;
 
-        private Queue<Transform> _items;
+        private List<Transform> _items;
 
         private void Awake()
         {
-            _items = new Queue<Transform>();
+            _items = new List<Transform>();
         }
 
         private void Start()
         {
             GeneratePart(0f);
+
+            StatsManager.Inst.OnKnifeMiss += OnKnifeMissHandler;
+        }
+
+        private void OnKnifeMissHandler(KnifeController obj)
+        {
+            this.DelayAction(1f, () =>
+            {
+                _items.ForEach((item) => Destroy(item.gameObject));
+                _items = new List<Transform>();
+
+                _lastY = 0f;
+                GeneratePart(0f);
+            });
         }
 
         private void Update()
@@ -44,7 +59,7 @@ namespace KnifeGame.World
         {
             var part = Instantiate(_partPrefab);
             part.transform.position = _startPos + Vector3.up * y;
-            _items.Enqueue(part.transform);
+            _items.Add(part.transform);
         }
     }
 }
