@@ -10,23 +10,23 @@ namespace KnifeGame.World
 {
     public class ArcadeCoin: MonoBehaviour
     {
-        private Rigidbody _rb;
-        private Tween _removeTween;
+        private Sequence _removeSequence;
 
-        private void Awake()
+        private void OnDestroy()
         {
-            _rb = GetComponent<Rigidbody>();
+           _removeSequence?.Kill();
         }
 
         private void OnTriggerEnter(Collider collider)
         {
+            if (_removeSequence != null) return;
+
             StatsManager.Inst.CoinsCount++;
 
-            _rb.constraints = RigidbodyConstraints.None;
-
-            _removeTween = transform.DOScale(Vector3.zero, 1f)
-                .SetEase(Ease.InBack)
-                .OnComplete(()=>Destroy(gameObject));
+            _removeSequence = DOTween.Sequence()
+                .Append(transform.DOScale(Vector3.zero, 1f).SetEase(Ease.InBack))
+                .Join(transform.DORotate(Vector3.up * 360f, 1f, RotateMode.FastBeyond360).SetRelative(true))
+                .OnComplete(() => Destroy(gameObject));
         }
     }
 }
