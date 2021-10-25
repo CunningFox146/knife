@@ -1,8 +1,11 @@
-﻿using System.Collections.Generic;
+﻿using DG.Tweening;
+using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace KnifeGame.World.Arcade
 {
@@ -17,12 +20,19 @@ namespace KnifeGame.World.Arcade
 
         private List<Transform> _items;
 
+        private Sequence _appearSequence;
+
         public Vector2 Size => _size;
         private GameObject TreePrefab => _treePrefabs[Random.Range(0, _treePrefabs.Length)];
 
         private void Start()
         {
             Generate();
+        }
+
+        private void OnDestroy()
+        {
+            _appearSequence?.Kill();
         }
 
         public void Generate()
@@ -44,6 +54,15 @@ namespace KnifeGame.World.Arcade
 
                 coin.transform.localPosition = new Vector3(Random.Range(-maxX, maxX), y, 0);
             }
+
+            //var pos = transform.position;
+            //transform.localScale = Vector3.one * 0.5f;
+            //transform.position = pos - Vector3.down;
+
+            //_appearSequence?.Kill();
+            //_appearSequence = DOTween.Sequence()
+                //.Append(transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack))
+                //.Append(transform.DOMove(pos, 0.5f).SetEase(Ease.OutSine));
         }
 
         private Transform CreateBranch(Vector3 pos)

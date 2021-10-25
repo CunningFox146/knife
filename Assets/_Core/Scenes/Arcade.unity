@@ -676,7 +676,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _partPrefab: {fileID: 7900517166425704474, guid: 2d8c3f41e4119bf41b10f3ab43766ea5, type: 3}
   _startPos: {x: 0, y: 5, z: 0}
-  _partStep: 10
+  _partStep: 8
 --- !u!224 &927577372 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 1712678072449653971, guid: 9a550cc764af2b645bc3d6d2f836fee8, type: 3}
