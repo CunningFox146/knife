@@ -30,8 +30,8 @@ namespace KnifeGame.World.Arcade
             RemoveItems();
 
             // Create branches (one for each side)
-            CreateBranch(new Vector3(_size.x * 0.5f, Random.Range(0f, _size.y * 0.5f), 0f)).Rotate(0f, 90f, 0f);
-            CreateBranch(new Vector3(_size.x * -0.5f, Random.Range(0f, _size.y * -0.5f), 0f)).Rotate(0f, -90f, 0f);
+            CreateBranch(new Vector3(_size.x * 0.5f - 1f, Random.Range(0f, _size.y * 0.5f), 0f)).Rotate(0f, 90f, 0f);
+            CreateBranch(new Vector3(_size.x * -0.5f + 1f, Random.Range(0f, _size.y * -0.5f), 0f)).Rotate(0f, -90f, 0f);
 
             // Create coins (with some % for each 1 y point)
             float maxX = _size.x * 0.5f - 2f;
