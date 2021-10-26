@@ -11,13 +11,12 @@ GameObject:
   - component: {fileID: 3883576127306423207}
   - component: {fileID: 5241694457770172817}
   - component: {fileID: 1982344961094163816}
-  - component: {fileID: 8006584613217191868}
   m_Layer: 0
   m_Name: ForestTreeTrunkBrunch
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &3883576127306423207
 Transform:
@@ -56,6 +55,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -80,17 +80,4 @@ MeshRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
---- !u!64 &8006584613217191868
-MeshCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 269760992594864564}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 4
-  m_Convex: 0
-  m_CookingOptions: 30
-  m_Mesh: {fileID: 8864612488589492939, guid: 8c9223dfaf47c4b4eb9b9a61579244e7, type: 3}
+  m_AdditionalVertexStreams: {fileID: 0}
