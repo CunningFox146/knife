@@ -1,12 +1,7 @@
 ﻿using DG.Tweening;
 using KnifeGame.Managers;
-using KnifeGame.Managers.ModeManagers;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using UnityEngine;
 using KnifeGame.Util;
+using UnityEngine;
 
 namespace KnifeGame.World
 {
@@ -20,8 +15,8 @@ namespace KnifeGame.World
         private void Start()
         {
             Move();
-            StatsManager.Inst.OnKnifeHit += (knife, flip) => Move(1f);
-            StatsManager.Inst.OnKnifeMiss += (knife) => Move(1f);
+            StatsManager.Inst.OnKnifeHit += OnKnifeHitHandler;
+            StatsManager.Inst.OnKnifeMiss += OnKnifeMissHandler;
         }
 
         private void OnDestroy()
@@ -32,6 +27,20 @@ namespace KnifeGame.World
             }
 
             _tween?.Kill();
+
+
+            StatsManager.Inst.OnKnifeHit -= OnKnifeHitHandler;
+            StatsManager.Inst.OnKnifeMiss -= OnKnifeMissHandler;
+        }
+
+        private void OnKnifeMissHandler(Knife.KnifeController obj)
+        {
+            Move(1f);
+        }
+
+        private void OnKnifeHitHandler(Knife.KnifeController arg1, int arg2)
+        {
+            Move(1f);
         }
 
         private void Move(float delay = 0f)

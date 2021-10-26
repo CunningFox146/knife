@@ -30,6 +30,11 @@ namespace KnifeGame.World
             StatsManager.Inst.OnKnifeMiss += OnKnifeMissHandler;
         }
 
+        private void OnDestroy()
+        {
+            StatsManager.Inst.OnKnifeMiss -= OnKnifeMissHandler;
+        }
+
         private void OnKnifeMissHandler(KnifeController obj)
         {
             this.DelayAction(1f, () =>

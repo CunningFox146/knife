@@ -1,9 +1,9 @@
 {
     "m_SelectedDeviceId": "d0cc08bc",
     "m_SelectedPackage": {
-        "deviceId": "",
-        "name": "",
-        "processId": 0,
+        "deviceId": "d0cc08bc",
+        "name": "com.CunningFox146.ThrowyKnife",
+        "processId": 17750,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -12,6 +12,36 @@
             "deviceId": "d0cc08bc",
             "name": "re.sova.five",
             "processId": 23551,
+            "exited": false
+        },
+        {
+            "deviceId": "d0cc08bc",
+            "name": "com.CunningFox146.ThrowyKnife",
+            "processId": 25716,
+            "exited": false
+        },
+        {
+            "deviceId": "d0cc08bc",
+            "name": "com.CunningFox146.ThrowyKnife",
+            "processId": 25706,
+            "exited": false
+        },
+        {
+            "deviceId": "d0cc08bc",
+            "name": "com.CunningFox146.ThrowyKnife",
+            "processId": 23552,
+            "exited": false
+        },
+        {
+            "deviceId": "d0cc08bc",
+            "name": "com.CunningFox146.ThrowyKnife",
+            "processId": 17746,
+            "exited": false
+        },
+        {
+            "deviceId": "d0cc08bc",
+            "name": "com.CunningFox146.ThrowyKnife",
+            "processId": 17750,
             "exited": false
         }
     ],

@@ -49,6 +49,7 @@ namespace KnifeGame.Knife
         private void OnDestroy()
         {
             SwipeManager.Inst.OnSwipe -= OnSwipeHandler;
+            StopAllCoroutines();
         }
 
         private void OnCollisionEnter(Collision collision)
