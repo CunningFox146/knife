@@ -11,7 +11,12 @@ namespace KnifeGame.Managers
     {
         public static GameSave CurrentSave;
 
-        private static string FilePath = $"{Application.persistentDataPath}/GameSave" + (Application.isEditor ? "_DEV" : string.Empty) + ".bytes";
+        private static string FilePath = $"{Application.persistentDataPath}/KnifeData" + (Application.isEditor ? "_DEV" : string.Empty) + ".bytes";
+
+        static SaveManager()
+        {
+            LoadSave();
+        }
 
         public static void LoadSave()
         {

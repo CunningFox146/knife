@@ -30,8 +30,10 @@ namespace KnifeGame.Managers
             }
         }
 
-        private void Start()
+        protected override void Awake()
         {
+            base.Awake();
+
             _ownedItems = SaveManager.CurrentSave.ownedItems;
             if (!_ownedItems.Contains(_itemList.defaultItem))
             {

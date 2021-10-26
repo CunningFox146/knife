@@ -55,14 +55,14 @@ namespace KnifeGame.World.Arcade
                 coin.transform.localPosition = new Vector3(Random.Range(-maxX, maxX), y, 0);
             }
 
-            //var pos = transform.position;
+            var pos = transform.position;
             //transform.localScale = Vector3.one * 0.5f;
-            //transform.position = pos - Vector3.down;
+            transform.position = pos + Vector3.down;
 
-            //_appearSequence?.Kill();
-            //_appearSequence = DOTween.Sequence()
-                //.Append(transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack))
-                //.Append(transform.DOMove(pos, 0.5f).SetEase(Ease.OutSine));
+            _appearSequence?.Kill();
+            _appearSequence = DOTween.Sequence()
+            //.Append(transform.DOScale(Vector3.one, 0.5f).SetEase(Ease.OutBack))
+            .Append(transform.DOMove(pos, 0.5f).SetEase(Ease.OutSine));
         }
 
         private Transform CreateBranch(Vector3 pos)
