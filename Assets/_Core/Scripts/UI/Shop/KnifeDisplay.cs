@@ -18,7 +18,7 @@ namespace KnifeGame.UI.Shop
                 .SetLoops(-1);
         }
 
-        public void SetModel(GameObject modelPrefab)
+        public void SetModel(GameObject modelPrefab, Vector2 pos)
         {
             if (_model != null)
             {
@@ -27,6 +27,7 @@ namespace KnifeGame.UI.Shop
 
             _model = Instantiate(modelPrefab, _modelContainer).transform;
             _model.SetLayerInChildren(LayerMask.NameToLayer("UI"));
+            _model.transform.localPosition = pos;
             _model.eulerAngles = Vector3.forward * -30f;
             _model.localScale = Vector3.zero;
 

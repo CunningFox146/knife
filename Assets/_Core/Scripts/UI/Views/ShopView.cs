@@ -94,7 +94,7 @@ namespace KnifeGame.UI.Views
 
         private void UpdateSelectedItem()
         {
-            _display.SetModel(SelectedItem.shopModel);
+            _display.SetModel(SelectedItem.shopModel, SelectedItem.shopPos);
 
             _weightContainer.SetCount(SelectedItem.weight);
             _scoreContainer.SetCount(SelectedItem.perFlip);

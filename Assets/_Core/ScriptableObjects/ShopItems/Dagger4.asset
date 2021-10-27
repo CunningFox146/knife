@@ -10,15 +10,15 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: dd609e7d7dea64b4389a4d722218660d, type: 3}
-  m_Name: DefaultKnife
+  m_Name: Dagger4
   m_EditorClassIdentifier: 
-  itemName: Kitchen Knife
-  itemPrice: 0
-  itemId: 0
-  prefab: {fileID: 3098185503865404351, guid: 79e11a4dd39ce1043914092d1c80df9b, type: 3}
-  weight: 1
-  perFlip: 1
-  shopModel: {fileID: 1897967234485176, guid: 897bdb5422ec2454399229cc7f5251cb, type: 3}
+  itemName: Blue Dagger
+  itemPrice: 150
+  itemId: 4
+  prefab: {fileID: 3098185503865404351, guid: 26148de5e9ca8594bb1c83708f413315, type: 3}
+  weight: 3
+  perFlip: 3
+  shopModel: {fileID: 1071745185363324, guid: ba6ea74fd089997409f176fe0857b07f, type: 3}
   shopPos: {x: 0, y: 50}
   pos: {x: 25, y: -20}
   scale: {x: 65, y: 65}
