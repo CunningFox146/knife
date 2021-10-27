@@ -20,6 +20,8 @@ namespace KnifeGame.UI
         
         public void OnFlip(int points, Text score)
         {
+            SoundManager.Sound.Play("Flip");
+
             _text.text = points.ToString();
 
             var rectTrans = (RectTransform)transform;

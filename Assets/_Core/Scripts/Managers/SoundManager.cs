@@ -3,14 +3,23 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
+using KnifeGame.SoundSystem;
 
 namespace KnifeGame.Managers
 {
     public class SoundManager : Singleton<SoundManager>
     {
         [SerializeField] private AudioMixer _mixer;
-
+        private SoundsEmitter _sound;
         public static AudioMixer Mixer => Inst._mixer;
+        public static SoundsEmitter Sound => Inst._sound;
+        public static void PlayClick() => Sound.Play("ButtonClick");
+
+        protected override void Awake()
+        {
+            base.Awake();
+            _sound = GetComponent<SoundsEmitter>();
+        }
 
         private void Start()
         {
