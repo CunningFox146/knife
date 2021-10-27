@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Classic
   m_EditorClassIdentifier: 
   resetOnHit: 0
+  hitEffect: {fileID: 800648032166681960, guid: 23d751d9e2c4f9a4fa247002121d51fb, type: 3}

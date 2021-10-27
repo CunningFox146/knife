@@ -55,9 +55,10 @@ namespace KnifeGame.Knife
         private void OnCollisionEnter(Collision collision)
         {
             if (!_isLaunched || !CanCollide) return;
+
             if (_isCheating)
             {
-                KnifeHit();
+                KnifeHit(collision.transform.rotation);
             }
             else
             {
@@ -69,7 +70,7 @@ namespace KnifeGame.Knife
         {
             if (!_isLaunched || _resetCoroutine != null || !CanCollide || !other.CompareTag("Platform")) return;
 
-            KnifeHit();
+            KnifeHit(other.transform.rotation);
         }
 
         private void KnifeMiss()
@@ -84,7 +85,7 @@ namespace KnifeGame.Knife
             OnKnifeMiss?.Invoke(this);
         }
 
-        private void KnifeHit()
+        private void KnifeHit(Quaternion rot)
         {
             OnKnifeHit(this, _flipsCount);
 
@@ -105,7 +106,17 @@ namespace KnifeGame.Knife
             {
                 _animator.SetTrigger(_hitHash);
             }
+            SpawnHitEffect(rot);
         }
+
+        private void SpawnHitEffect(Quaternion rot)
+        {
+            var fx = Instantiate(GameManager.Inst.Settings.hitEffect);
+            fx.transform.position = transform.position;
+            fx.transform.rotation = rot;
+            Destroy(fx, 1.5f);
+        }
+
 
         private void OnSwipeHandler(Vector3 direction)
         {
