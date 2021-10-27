@@ -23,9 +23,6 @@ namespace KnifeGame.World
                 .OnComplete(() =>Destroy(gameObject));
         }
 
-        private void OnCollisionEnter(Collision collision)
-        {
-            _sound.Play("CoinDrop");
-        }
+        private void OnCollisionEnter(Collision collision) => _sound.Play("CoinDrop");
     }
 }

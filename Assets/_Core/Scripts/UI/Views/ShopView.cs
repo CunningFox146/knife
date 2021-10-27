@@ -66,7 +66,8 @@ namespace KnifeGame.UI.Views
         {
             if (ShopManager.Inst.BuyItem(SelectedItem))
             {
-                //TODO Effects and Sound
+                //TODO Effects
+                SoundManager.Sound.Play("ItemBought");
                 UpdateButtons(true);
                 _tiles.ForEach((item) => item.UpdateIsOwned());
             }
