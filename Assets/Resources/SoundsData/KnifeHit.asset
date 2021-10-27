@@ -10,15 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fb8e83505fb07f844b7a615506ddbdf1, type: 3}
-  m_Name: MainTheme
+  m_Name: KnifeHit
   m_EditorClassIdentifier: 
   clips:
-  - {fileID: 8300000, guid: 3c51564e013d69b4c8b0c02a30da5f99, type: 3}
-  soundType: 0
-  looping: 1
-  volume: 0.5
+  - {fileID: 8300000, guid: 4887cd3d216810842a8fada0fbdc0784, type: 3}
+  - {fileID: 8300000, guid: 3a4d50771f1f7e54eba57f32f57edc86, type: 3}
+  - {fileID: 8300000, guid: dced6fd4ba9878a4ea332be6ef502e11, type: 3}
+  soundType: 1
+  looping: 0
+  volume: 1
   pitch:
   - 1
-  mixerGroup: {fileID: -322240457623992151, guid: c7ec835cec907ca49adc66a1996c2b48, type: 2}
+  mixerGroup: {fileID: -5388892180474645268, guid: c7ec835cec907ca49adc66a1996c2b48, type: 2}
   minDistance: 1
   maxDistance: 30
