@@ -97,7 +97,7 @@ LightmapSettings:
     m_ExportTrainingData: 0
     m_TrainingDataDestination: TrainingData
     m_LightProbeSampleCountMultiplier: 4
-  m_LightingDataAsset: {fileID: 0}
+  m_LightingDataAsset: {fileID: 112000000, guid: a355d5d2e247f9d46bf114558915f8a7, type: 2}
   m_LightingSettings: {fileID: 4890085278179872738, guid: f4859928fd417214788bb3e5bcc630f6, type: 2}
 --- !u!196 &4
 NavMeshSettings:
@@ -175,7 +175,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5357590039681617450, guid: 9ef53bca6d5e6f347927a6ac4b044997, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6707551392791780501, guid: 9ef53bca6d5e6f347927a6ac4b044997, type: 3}
       propertyPath: m_RootOrder
@@ -757,7 +757,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!108 &705507994
 Light:
