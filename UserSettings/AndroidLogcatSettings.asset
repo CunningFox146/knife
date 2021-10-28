@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "d0cc08bc",
         "name": "com.CunningFox146.ThrowyKnife",
-        "processId": 2132,
+        "processId": 10453,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -54,6 +54,18 @@
             "deviceId": "d0cc08bc",
             "name": "com.CunningFox146.ThrowyKnife",
             "processId": 2132,
+            "exited": false
+        },
+        {
+            "deviceId": "d0cc08bc",
+            "name": "com.CunningFox146.ThrowyKnife",
+            "processId": 29251,
+            "exited": false
+        },
+        {
+            "deviceId": "d0cc08bc",
+            "name": "com.CunningFox146.ThrowyKnife",
+            "processId": 10453,
             "exited": false
         }
     ],
