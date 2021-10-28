@@ -1,4 +1,5 @@
-﻿using KnifeGame.Util;
+﻿using KnifeGame.ObjectPool;
+using KnifeGame.Util;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -74,16 +75,16 @@ namespace KnifeGame.SoundSystem
 
         private AudioSource GetSource(string soundName)
         {
-            GameObject obj = Instantiate(_soundEmitterPrefab, transform);
+            GameObject obj = ObjectPooler.Inst.GetObject(_soundEmitterPrefab);
             obj.name = "SoundEmitter: " + soundName;
-            //obj.transform.parent = gameObject.transform;
+            obj.transform.parent = gameObject.transform;
 
             return obj.GetComponent<AudioSource>();
         }
 
         private void InitSource(AudioSource source, SoundData sound)
         {
-            source.clip = ArrayUtil.GetRandomItem<AudioClip>(sound.clips);
+            source.clip = ArrayUtil.GetRandomItem(sound.clips);
             source.pitch = ArrayUtil.GetRandomRangeFromArray(sound.pitch);
             source.volume = sound.volume;
             source.spatialBlend = (float)sound.soundType;
@@ -103,13 +104,13 @@ namespace KnifeGame.SoundSystem
         private void DestroySource(AudioSource source)
         {
             source.Stop();
-            Destroy(source.gameObject);
+            ObjectPooler.Inst.ReturnObject(source.gameObject);
         }
         private IEnumerator DestroySource(AudioSource source, float delay)
         {
             yield return new WaitForSeconds(delay);
             source.Stop();
-            Destroy(source.gameObject);
+            ObjectPooler.Inst.ReturnObject(source.gameObject);
         }
     }
 }
