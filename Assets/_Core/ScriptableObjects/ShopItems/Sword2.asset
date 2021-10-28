@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd609e7d7dea64b4389a4d722218660d, type: 3}
   m_Name: Sword2
   m_EditorClassIdentifier: 
-  itemName: Sword
-  itemPrice: 150
-  itemId: 0
+  itemName: Shapen Sword
+  itemPrice: 300
+  itemId: 6
   prefab: {fileID: 3098185503865404351, guid: 81f2d39e94b1ff049b00e3cb0cb5852d, type: 3}
   weight: 2
   perFlip: 2

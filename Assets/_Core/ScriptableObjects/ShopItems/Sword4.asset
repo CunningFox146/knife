@@ -12,12 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dd609e7d7dea64b4389a4d722218660d, type: 3}
   m_Name: Sword4
   m_EditorClassIdentifier: 
-  itemName: Sword
-  itemPrice: 150
-  itemId: 0
+  itemName: Blue Sword
+  itemPrice: 500
+  itemId: 8
   prefab: {fileID: 3098185503865404351, guid: 26148de5e9ca8594bb1c83708f413315, type: 3}
-  weight: 2
-  perFlip: 2
+  weight: 3
+  perFlip: 3
   shopModel: {fileID: 1867074403255362, guid: 59e2be47f0cf3f14eb155b08d92e2d2f, type: 3}
   shopPos: {x: 0, y: 50}
   pos: {x: 35, y: -30}
