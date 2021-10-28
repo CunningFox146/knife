@@ -16,7 +16,7 @@ MonoBehaviour:
   itemPrice: 150
   itemId: 3
   prefab: {fileID: 3098185503865404351, guid: 837b73b2781cf4a43b52f21660310f28, type: 3}
-  weight: 3
+  weight: 2
   perFlip: 2
   shopModel: {fileID: 1899126012678990, guid: 2deee0892c90016418bde35e4937a2e5, type: 3}
   shopPos: {x: 0, y: 50}
