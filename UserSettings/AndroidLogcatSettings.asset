@@ -3,7 +3,7 @@
     "m_SelectedPackage": {
         "deviceId": "d0cc08bc",
         "name": "com.CunningFox146.ThrowyKnife",
-        "processId": 10453,
+        "processId": 10452,
         "exited": false
     },
     "m_SelectedPriority": 0,
@@ -11,61 +11,37 @@
         {
             "deviceId": "d0cc08bc",
             "name": "com.CunningFox146.ThrowyKnife",
-            "processId": 25706,
-            "exited": true
-        },
-        {
-            "deviceId": "d0cc08bc",
-            "name": "com.CunningFox146.ThrowyKnife",
-            "processId": 23552,
-            "exited": true
-        },
-        {
-            "deviceId": "d0cc08bc",
-            "name": "com.CunningFox146.ThrowyKnife",
-            "processId": 17746,
-            "exited": true
-        },
-        {
-            "deviceId": "d0cc08bc",
-            "name": "com.CunningFox146.ThrowyKnife",
-            "processId": 17750,
-            "exited": true
-        },
-        {
-            "deviceId": "d0cc08bc",
-            "name": "com.CunningFox146.ThrowyKnife",
-            "processId": 17749,
-            "exited": true
-        },
-        {
-            "deviceId": "d0cc08bc",
-            "name": "com.supercell.clashroyale",
-            "processId": 2106,
-            "exited": false
-        },
-        {
-            "deviceId": "d0cc08bc",
-            "name": "com.CunningFox146.ThrowyKnife",
-            "processId": 2139,
-            "exited": false
-        },
-        {
-            "deviceId": "d0cc08bc",
-            "name": "com.CunningFox146.ThrowyKnife",
             "processId": 2132,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "d0cc08bc",
             "name": "com.CunningFox146.ThrowyKnife",
             "processId": 29251,
-            "exited": false
+            "exited": true
         },
         {
             "deviceId": "d0cc08bc",
             "name": "com.CunningFox146.ThrowyKnife",
             "processId": 10453,
+            "exited": true
+        },
+        {
+            "deviceId": "d0cc08bc",
+            "name": "com.google.android.apps.nexuslauncher",
+            "processId": 17145,
+            "exited": true
+        },
+        {
+            "deviceId": "d0cc08bc",
+            "name": "com.CunningFox146.ThrowyKnife",
+            "processId": 10454,
+            "exited": true
+        },
+        {
+            "deviceId": "d0cc08bc",
+            "name": "com.CunningFox146.ThrowyKnife",
+            "processId": 10452,
             "exited": false
         }
     ],
