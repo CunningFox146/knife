@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Sword3
   m_EditorClassIdentifier: 
   itemName: Razored Sword
-  itemPrice: 400
+  itemPrice: 300
   itemId: 7
-  prefab: {fileID: 3098185503865404351, guid: 26148de5e9ca8594bb1c83708f413315, type: 3}
+  prefab: {fileID: 3098185503865404351, guid: 4120135b792a8074fa249e26eda8e749, type: 3}
   weight: 3
   perFlip: 2
   shopModel: {fileID: 1051431287110070, guid: 9ef152fc94eb49a40a0fe73b4b3d3f22, type: 3}

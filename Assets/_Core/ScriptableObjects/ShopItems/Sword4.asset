@@ -15,7 +15,7 @@ MonoBehaviour:
   itemName: Blue Sword
   itemPrice: 500
   itemId: 8
-  prefab: {fileID: 3098185503865404351, guid: 26148de5e9ca8594bb1c83708f413315, type: 3}
+  prefab: {fileID: 3098185503865404351, guid: 026b1bbee7586164c92d9e6ab1225baf, type: 3}
   weight: 3
   perFlip: 3
   shopModel: {fileID: 1867074403255362, guid: 59e2be47f0cf3f14eb155b08d92e2d2f, type: 3}

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sword2
   m_EditorClassIdentifier: 
   itemName: Shapen Sword
-  itemPrice: 300
+  itemPrice: 200
   itemId: 6
   prefab: {fileID: 3098185503865404351, guid: 81f2d39e94b1ff049b00e3cb0cb5852d, type: 3}
   weight: 2

@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Sword1
   m_EditorClassIdentifier: 
   itemName: Classic Sword
-  itemPrice: 200
+  itemPrice: 100
   itemId: 5
   prefab: {fileID: 3098185503865404351, guid: bfd539e737ed27e48825a90d752162eb, type: 3}
   weight: 1
