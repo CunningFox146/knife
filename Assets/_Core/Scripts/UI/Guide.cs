@@ -51,7 +51,7 @@ namespace KnifeGame.UI
         public void Kill()
         {
             OnDestroy();
-            _image.DOColor(new Color(1, 1, 1, 0), 0.35f).SetEase(Ease.InCubic).OnComplete(()=>Destroy(gameObject));
+            _image.DOColor(new Color(1, 1, 1, 0), 0.35f).SetEase(Ease.InCubic).OnComplete(()=>gameObject.SetActive(false));
         }
     }
 }

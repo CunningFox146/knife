@@ -18,6 +18,11 @@ namespace KnifeGame.UI.Displayers
             StatsManager.Inst.OnScoreChanged += OnScoreChangedHandler;
         }
 
+        private void OnDestroy()
+        {
+            StatsManager.Inst.OnScoreChanged -= OnScoreChangedHandler;
+        }
+
         private void OnScoreChangedHandler(int score)
         {
             _text.text = score.ToString();

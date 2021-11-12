@@ -19,6 +19,11 @@ namespace KnifeGame.UI.Displayers
             OnScoreChangedHandler(StatsManager.Inst.BestScore);
         }
 
+        private void OnDestroy()
+        {
+            StatsManager.Inst.OnBestScoreChanged -= OnScoreChangedHandler;
+        }
+
         private void OnScoreChangedHandler(int score)
         {
             _text.text = score.ToString();

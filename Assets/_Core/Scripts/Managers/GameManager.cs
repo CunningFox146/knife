@@ -1,4 +1,5 @@
 ﻿using KnifeGame.Knife;
+using KnifeGame.Managers.ModeManagers;
 using KnifeGame.Shop;
 using KnifeGame.Util;
 using System;
@@ -9,12 +10,28 @@ namespace KnifeGame.Managers
     public class GameManager : Singleton<GameManager>
     {
         public event Action OnGameStart;
+        public event Action<KnifeController, KnifeController> OnKnifeChanged;
 
+        [SerializeField] private ModeSettings _settings;
         [SerializeField] private Vector3 _startPos;
 
         private KnifeController _knife;
 
-        public KnifeController Knife { get => _knife; private set => _knife = value; }
+        public Vector3 StartPos => _startPos;
+        public KnifeController Knife
+        {
+            get => _knife;
+            private set
+            {
+                if (_knife != value)
+                {
+                    OnKnifeChanged?.Invoke(_knife, value);
+                }
+                _knife = value;
+            }
+        }
+
+        public ModeSettings Settings { get => _settings; private set => _settings = value; }
 
         private void Start()
         {
@@ -22,6 +39,18 @@ namespace KnifeGame.Managers
 
             ShopManager.Inst.OnItemChanged += OnItemChangedHandler;
             SwipeManager.Inst.OnSwipeStart += OnSwipeStartHandler;
+        }
+
+        private void OnDestroy()
+        {
+            ShopManager.Inst.OnItemChanged -= OnItemChangedHandler;
+            SwipeManager.Inst.OnSwipeStart -= OnSwipeStartHandler;
+        }
+
+        void OnApplicationQuit()
+        {
+            SaveManager.SaveCurrent();
+            Debug.Log($"Application ending after {Time.time} seconds");
         }
 
         private void OnItemChangedHandler(ShopItem selectedItem)

@@ -1,6 +1,7 @@
 using KnifeGame.Managers;
 using KnifeGame.Shop;
 using KnifeGame.Util;
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -8,16 +9,20 @@ namespace KnifeGame.Knife
 {
     public class KnifeController : MonoBehaviour
     {
+        public event Action<KnifeController, int> OnKnifeFlip;
+        public event Action<KnifeController, int> OnKnifeHit;
+        public event Action<KnifeController> OnKnifeMiss;
+
         [SerializeField] private float _launchSpeed = 20f;
         [SerializeField] private bool _isPlayingHit = true;
         [SerializeField] private TrailRenderer _trail;
+        [SerializeField] private bool _isCheating = false;
 
         public ShopItem info;
 
         private Rigidbody _rb;
         private Animator _animator;
         private int _hitHash;
-        private Vector3 _startPos;
 
         private int _flipsCount = 0;
         private bool _isLaunched = false;
@@ -38,36 +43,50 @@ namespace KnifeGame.Knife
 
         private void Start()
         {
-            _startPos = transform.position;
-
             SwipeManager.Inst.OnSwipe += OnSwipeHandler;
         }
 
         private void OnDestroy()
         {
             SwipeManager.Inst.OnSwipe -= OnSwipeHandler;
+            StopAllCoroutines();
         }
 
         private void OnCollisionEnter(Collision collision)
         {
             if (!_isLaunched || !CanCollide) return;
-
-            _trail.emitting = false;
-
-            _isLaunched = false;
-            _flipsCount = 0;
-            _resetCoroutine = this.DelayAction(1f, () =>
+            if (_isCheating)
             {
-                ResetKnife();
-                _resetCoroutine = null;
-            });
-
-            StatsManager.Inst.KnifeMiss(this);
+                KnifeHit();
+            }
+            else
+            {
+                KnifeMiss();
+            }
         }
 
         private void OnTriggerEnter(Collider other)
         {
             if (!_isLaunched || _resetCoroutine != null || !CanCollide || !other.CompareTag("Platform")) return;
+
+            KnifeHit();
+        }
+
+        private void KnifeMiss()
+        {
+            _trail.emitting = false;
+
+            _isLaunched = false;
+            _flipsCount = 0;
+
+            ResetKnife();
+
+            OnKnifeMiss?.Invoke(this);
+        }
+
+        private void KnifeHit()
+        {
+            OnKnifeHit(this, _flipsCount);
 
             _launchStart = 999;
             _rb.isKinematic = true;
@@ -75,7 +94,11 @@ namespace KnifeGame.Knife
 
             _trail.emitting = false;
 
-            StatsManager.Inst.KnifeHit(this, _flipsCount);
+            if (GameManager.Inst.Settings.resetOnHit)
+            {
+                ResetKnife();
+            }
+
             _flipsCount = 0;
 
             if (_isPlayingHit)
@@ -91,11 +114,16 @@ namespace KnifeGame.Knife
 
         private void ResetKnife()
         {
-            transform.position = _startPos;
-            transform.rotation = new Quaternion();
+            _resetCoroutine = this.DelayAction(1f, () =>
+            {
+                transform.position = GameManager.Inst.StartPos;
+                transform.rotation = new Quaternion();
 
-            _rb.velocity = Vector3.zero;
-            _rb.angularVelocity = Vector3.zero;
+                _rb.velocity = Vector3.zero;
+                _rb.angularVelocity = Vector3.zero;
+
+                _resetCoroutine = null;
+            });
         }
 
         private IEnumerator RotationCoroutine()
@@ -113,7 +141,8 @@ namespace KnifeGame.Knife
                 {
                     totalRot = 0f;
                     _flipsCount++;
-                    StatsManager.Inst.KnifeFlip(this, info.perFlip);
+
+                    OnKnifeFlip(this, info.perFlip);
                 }
 
                 lastUp = transform.up;

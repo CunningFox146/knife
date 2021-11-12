@@ -34,12 +34,18 @@ namespace KnifeGame.Managers
         {
             base.Awake();
 
-            _ownedItems = new List<int>();
-            // TODO: Load owned items
-            _ownedItems.Add(_itemList.defaultItem);
+            _ownedItems = SaveManager.CurrentSave.ownedItems;
+            if (!_ownedItems.Contains(_itemList.defaultItem))
+            {
+                _ownedItems.Add(_itemList.defaultItem);
+            }
 
-            // TODO: Load instead of picking default prefab
-            _selectedItem = _itemList.Default;
+            int itemId = _itemList.defaultItem;
+            if (SaveManager.CurrentSave.selectedItem != 0)
+            {
+                itemId = SaveManager.CurrentSave.selectedItem;
+            }
+            _selectedItem = _itemList.GetItem(itemId);
         }
 
 
@@ -51,8 +57,16 @@ namespace KnifeGame.Managers
 
             StatsManager.Inst.CoinsCount -= item.itemPrice;
             _ownedItems.Add(item.itemId);
+            SyncAndSave();
 
             return true;
+        }
+
+        public void SyncAndSave()
+        {
+            //SaveManager.CurrentSave.ownedItems = _ownedItems;
+            SaveManager.CurrentSave.selectedItem = SelectedItem.itemId;
+            SaveManager.SaveCurrent();
         }
     }
 }
