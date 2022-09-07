@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd609e7d7dea64b4389a4d722218660d, type: 3}
+  m_Name: Dagger4
+  m_EditorClassIdentifier: 
+  itemName: Blue Dagger
+  itemPrice: 150
+  itemId: 4
+  prefab: {fileID: 3098185503865404351, guid: 26148de5e9ca8594bb1c83708f413315, type: 3}
+  weight: 2
+  perFlip: 3
+  shopModel: {fileID: 1071745185363324, guid: ba6ea74fd089997409f176fe0857b07f, type: 3}
+  shopPos: {x: 0, y: 50}
+  pos: {x: 25, y: -20}
+  scale: {x: 65, y: 65}
+  rotation: {x: 0, y: 0, z: 45}
