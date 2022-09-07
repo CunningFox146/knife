@@ -5,12 +5,16 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using UnityEngine;
+using KnifeGame.SoundSystem;
 
 namespace KnifeGame.World
 {
     public class ArcadeCoin: MonoBehaviour
     {
         private Sequence _removeSequence;
+        private SoundsEmitter _sound;
+
+        private void Awake() => _sound = GetComponent<SoundsEmitter>();
 
         private void OnDestroy()
         {
@@ -19,6 +23,7 @@ namespace KnifeGame.World
 
         private void OnTriggerEnter(Collider collider)
         {
+            _sound.Play("CoinDrop");
             if (_removeSequence != null) return;
 
             StatsManager.Inst.CoinsCount++;

@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 using DG.Tweening;
+using KnifeGame.Managers;
 
 namespace KnifeGame.UI
 {
@@ -18,7 +19,10 @@ namespace KnifeGame.UI
             _menu = GetComponentInParent<Menu>();
             _button = GetComponent<Button>();
 
-            _button.onClick.AddListener(() => _menu.SelectItem(this));
+            _button.onClick.AddListener(() => {
+                _menu.SelectItem(this);
+                SoundManager.PlayClick();
+            });
         }
 
         private void ChangeColor(Color color)

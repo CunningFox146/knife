@@ -152,6 +152,7 @@ GameObject:
   - component: {fileID: 5067941195368615377}
   - component: {fileID: 7093101212310494302}
   - component: {fileID: 8904122040898131609}
+  - component: {fileID: 8003018394020497215}
   m_Layer: 6
   m_Name: KnifeTemplate
   m_TagString: Untagged
@@ -216,10 +217,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0f20303886b27a84799b3133ff65327c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _rotationSpeed: 20
   _launchSpeed: 20
   _isPlayingHit: 1
   _trail: {fileID: 7199265793328587680}
+  _isCheating: 0
+  info: {fileID: 0}
 --- !u!95 &8904122040898131609
 Animator:
   serializedVersion: 3
@@ -239,6 +241,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &8003018394020497215
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3490336190593854016}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a624add76745af74b8768983789c560c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundEmitterPrefab: {fileID: 6024488794690586894, guid: d6f4b58597101de4781f560f317b149a, type: 3}
+  _soundOnAwake: 
 --- !u!1 &6326883974777447263
 GameObject:
   m_ObjectHideFlags: 0

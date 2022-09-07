@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 4212570027725833244}
   - component: {fileID: 7428894697499154841}
   - component: {fileID: 1493211310655869838}
+  - component: {fileID: 6480259525592229738}
   m_Layer: 0
   m_Name: ArcadeCoin
   m_TagString: Untagged
@@ -59,6 +60,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bdb7d00bd7cf79044a6a126f8211f06c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &6480259525592229738
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1182789115057670241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a624add76745af74b8768983789c560c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _soundEmitterPrefab: {fileID: 6024488794690586894, guid: d6f4b58597101de4781f560f317b149a, type: 3}
+  _soundOnAwake: 
 --- !u!1001 &6457242673514435543
 PrefabInstance:
   m_ObjectHideFlags: 0

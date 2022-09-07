@@ -37,15 +37,29 @@ namespace KnifeGame.Managers
 
         private void Start()
         {
-            ViewManager.Inst.OnViewShown += OnViewShown;
+            ViewManager.Inst.OnViewShown += OnViewShownHandler;
+            OptionsManager.OnSwipesEnabledChanged += OnSwipesEnabledChangedHandler;
         }
 
         private void OnDestroy()
         {
-            ViewManager.Inst.OnViewShown -= OnViewShown;
+            ViewManager.Inst.OnViewShown -= OnViewShownHandler;
+            OptionsManager.OnSwipesEnabledChanged -= OnSwipesEnabledChangedHandler;
         }
 
-        private void OnViewShown(View newView)
+        private void OnSwipesEnabledChangedHandler(bool isEnabled)
+        {
+            if (isEnabled)
+            {
+                IsActive = ViewManager.IsViewVisible<MainView>();
+            }
+            else
+            {
+                IsActive = isEnabled;
+            }
+        }
+
+        private void OnViewShownHandler(View newView)
         {
             IsActive = newView is MainView;
             //if (_isSwiping && !IsActive)

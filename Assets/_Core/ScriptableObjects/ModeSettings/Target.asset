@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Target
   m_EditorClassIdentifier: 
   resetOnHit: 1
+  hitEffect: {fileID: 3158893004269978774, guid: 74965b2d00f4c804a806728003556cf9, type: 3}

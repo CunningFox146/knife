@@ -11,5 +11,6 @@ namespace KnifeGame.Managers.ModeManagers
     public class ModeSettings : ScriptableObject
     {
         public bool resetOnHit = false;
+        public GameObject hitEffect;
     }
 }

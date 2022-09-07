@@ -44,7 +44,11 @@ namespace KnifeGame.Scripts.UI.Shop
 
             UpdateIsOwned();
 
-            _button.onClick.AddListener(() => onClick.Invoke());
+            _button.onClick.AddListener(() =>
+            {
+                onClick.Invoke();
+                SoundManager.PlayClick();
+            });
         }
 
         public void UpdateIsOwned()

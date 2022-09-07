@@ -1,16 +1,14 @@
 ﻿using KnifeGame.Util;
-using UnityEngine;
 using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+using System.Collections;
+using UnityEngine;
 using UnityEngine.SceneManagement;
 
 namespace KnifeGame.Managers
 {
     public class ScenesManager : Singleton<ScenesManager>
     {
+        public event Action OnSceneLoaded;
         public event Action<GameModes> OnGameModeChange;
 
         [SerializeField] private GameModes _mode = GameModes.Classic;
@@ -31,7 +29,20 @@ namespace KnifeGame.Managers
         public void SetGameMode(GameModes mode)
         {
             Mode = mode;
-            SceneManager.LoadScene((int)mode);
+            StartCoroutine(LoadSceneCoroutine((int)mode));
+        }
+
+        private IEnumerator LoadSceneCoroutine(int scene)
+        {
+            var operation = SceneManager.LoadSceneAsync(scene);
+            while (!operation.isDone)
+            {
+                yield return null;
+            }
+
+            yield return new WaitForEndOfFrame(); // So Start() is done running
+
+            OnSceneLoaded?.Invoke();
         }
     }
 }

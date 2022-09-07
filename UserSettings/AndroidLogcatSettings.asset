@@ -3,45 +3,45 @@
     "m_SelectedPackage": {
         "deviceId": "d0cc08bc",
         "name": "com.CunningFox146.ThrowyKnife",
-        "processId": 17750,
+        "processId": 10452,
         "exited": false
     },
     "m_SelectedPriority": 0,
     "m_KnownPackagesForSerialization": [
         {
             "deviceId": "d0cc08bc",
-            "name": "re.sova.five",
-            "processId": 23551,
-            "exited": false
+            "name": "com.CunningFox146.ThrowyKnife",
+            "processId": 2132,
+            "exited": true
         },
         {
             "deviceId": "d0cc08bc",
             "name": "com.CunningFox146.ThrowyKnife",
-            "processId": 25716,
-            "exited": false
+            "processId": 29251,
+            "exited": true
         },
         {
             "deviceId": "d0cc08bc",
             "name": "com.CunningFox146.ThrowyKnife",
-            "processId": 25706,
-            "exited": false
+            "processId": 10453,
+            "exited": true
+        },
+        {
+            "deviceId": "d0cc08bc",
+            "name": "com.google.android.apps.nexuslauncher",
+            "processId": 17145,
+            "exited": true
         },
         {
             "deviceId": "d0cc08bc",
             "name": "com.CunningFox146.ThrowyKnife",
-            "processId": 23552,
-            "exited": false
+            "processId": 10454,
+            "exited": true
         },
         {
             "deviceId": "d0cc08bc",
             "name": "com.CunningFox146.ThrowyKnife",
-            "processId": 17746,
-            "exited": false
-        },
-        {
-            "deviceId": "d0cc08bc",
-            "name": "com.CunningFox146.ThrowyKnife",
-            "processId": 17750,
+            "processId": 10452,
             "exited": false
         }
     ],

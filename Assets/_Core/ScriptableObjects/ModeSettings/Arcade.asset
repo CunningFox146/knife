@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Arcade
   m_EditorClassIdentifier: 
   resetOnHit: 0
+  hitEffect: {fileID: 3158893004269978774, guid: 9d4747cea0e5eb343bc98c11413fce3e, type: 3}

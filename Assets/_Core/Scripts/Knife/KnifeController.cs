@@ -4,6 +4,7 @@ using KnifeGame.Util;
 using System;
 using System.Collections;
 using UnityEngine;
+using KnifeGame.SoundSystem;
 
 namespace KnifeGame.Knife
 {
@@ -22,6 +23,7 @@ namespace KnifeGame.Knife
 
         private Rigidbody _rb;
         private Animator _animator;
+        private SoundsEmitter _sound;
         private int _hitHash;
 
         private int _flipsCount = 0;
@@ -37,6 +39,7 @@ namespace KnifeGame.Knife
         {
             _rb = GetComponent<Rigidbody>();
             _animator = GetComponent<Animator>();
+            _sound = GetComponent<SoundsEmitter>();
 
             _hitHash = Animator.StringToHash("Hit");
         }
@@ -55,9 +58,10 @@ namespace KnifeGame.Knife
         private void OnCollisionEnter(Collision collision)
         {
             if (!_isLaunched || !CanCollide) return;
+
             if (_isCheating)
             {
-                KnifeHit();
+                KnifeHit(collision.transform.rotation);
             }
             else
             {
@@ -69,7 +73,7 @@ namespace KnifeGame.Knife
         {
             if (!_isLaunched || _resetCoroutine != null || !CanCollide || !other.CompareTag("Platform")) return;
 
-            KnifeHit();
+            KnifeHit(other.transform.rotation);
         }
 
         private void KnifeMiss()
@@ -82,9 +86,11 @@ namespace KnifeGame.Knife
             ResetKnife();
 
             OnKnifeMiss?.Invoke(this);
+
+            _sound.Play("KnifeMiss");
         }
 
-        private void KnifeHit()
+        private void KnifeHit(Quaternion rot)
         {
             OnKnifeHit(this, _flipsCount);
 
@@ -105,6 +111,17 @@ namespace KnifeGame.Knife
             {
                 _animator.SetTrigger(_hitHash);
             }
+            SpawnHitEffect(rot);
+
+            _sound.Play("KnifeHit");
+        }
+
+        private void SpawnHitEffect(Quaternion rot)
+        {
+            var fx = Instantiate(GameManager.Inst.Settings.hitEffect);
+            fx.transform.position = transform.position;
+            fx.transform.rotation = rot;
+            Destroy(fx, 1.5f);
         }
 
         private void OnSwipeHandler(Vector3 direction)
@@ -171,6 +188,8 @@ namespace KnifeGame.Knife
             _rb.isKinematic = false;
             _rb.AddForce(direction * _launchSpeed, ForceMode.Impulse);
             _rb.AddTorque(0f, 0f, rotation, ForceMode.Impulse);
+
+            _sound.Play("Throw");
         }
     }
 }

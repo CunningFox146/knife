@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd609e7d7dea64b4389a4d722218660d, type: 3}
+  m_Name: Dagger1
+  m_EditorClassIdentifier: 
+  itemName: Classic dagger
+  itemPrice: 25
+  itemId: 1
+  prefab: {fileID: 3098185503865404351, guid: 39060d299e4cee24d9e7f818ac7f3b85, type: 3}
+  weight: 1
+  perFlip: 2
+  shopModel: {fileID: 1142036983291742, guid: ac795e0d857e8ba4086455dfbb94cb2e, type: 3}
+  shopPos: {x: 0, y: 50}
+  pos: {x: 25, y: -20}
+  scale: {x: 65, y: 65}
+  rotation: {x: 0, y: 0, z: 45}

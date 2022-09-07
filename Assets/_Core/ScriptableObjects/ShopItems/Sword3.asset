@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd609e7d7dea64b4389a4d722218660d, type: 3}
+  m_Name: Sword3
+  m_EditorClassIdentifier: 
+  itemName: Razored Sword
+  itemPrice: 300
+  itemId: 7
+  prefab: {fileID: 3098185503865404351, guid: 4120135b792a8074fa249e26eda8e749, type: 3}
+  weight: 3
+  perFlip: 2
+  shopModel: {fileID: 1051431287110070, guid: 9ef152fc94eb49a40a0fe73b4b3d3f22, type: 3}
+  shopPos: {x: 0, y: 50}
+  pos: {x: 35, y: -30}
+  scale: {x: 65, y: 65}
+  rotation: {x: 0, y: 0, z: 45}

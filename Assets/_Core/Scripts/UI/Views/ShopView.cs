@@ -66,7 +66,8 @@ namespace KnifeGame.UI.Views
         {
             if (ShopManager.Inst.BuyItem(SelectedItem))
             {
-                //TODO Effects and Sound
+                //TODO Effects
+                SoundManager.Sound.Play("ItemBought");
                 UpdateButtons(true);
                 _tiles.ForEach((item) => item.UpdateIsOwned());
             }
@@ -94,7 +95,7 @@ namespace KnifeGame.UI.Views
 
         private void UpdateSelectedItem()
         {
-            _display.SetModel(SelectedItem.shopModel);
+            _display.SetModel(SelectedItem.shopModel, SelectedItem.shopPos);
 
             _weightContainer.SetCount(SelectedItem.weight);
             _scoreContainer.SetCount(SelectedItem.perFlip);
